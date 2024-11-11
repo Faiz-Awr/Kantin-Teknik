@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+
+.main-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #F3E6E1;
+    flex-direction: column;
+    height: 995px;
+}
+
+.logo{
+    margin-top: 50px;
+}
+
+
+.register-form{
+    margin-top: 50px;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    background-color: #ECCDC2;
+    padding: 20px;
+    flex-direction: column;
+    padding-left: 70px;
+    padding-right: 70px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header{
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    color: #D24511;
+}
+
+.nama-lengkap{
+    margin-top: 30px;
+}
+
+.nama-kantin{
+    margin-top: 20px;
+}
+
+.register-form-main{
+    display: flex;
+    gap: 15px;
+}
+.register-form1{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.register-form2{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.password{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-register{
+    margin-top: 30px;
+    width: 25%;
+    align-self: center;
+    background-color: #D24511;
+    color: #ECCDC2;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-register:hover{
+    transform: scale(0.95);
+    background-color: #42251a;
+    transition: 0.4s;
+    color: #d24511;
+}
+
+.email{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.nomor-telepon{
+    font-size: 18px;
+    font-weight: 600;
+}
+.nama-lengkap{
+    font-size: 18px;
+    font-weight: 600;
+}
+.nama-kantin{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+input{
+    border-radius: 5px;
+    padding: 5px;
+    border-color: #A78181;
+}
+
+input:focus{
+    outline: #A78181;
+}
+
+p{
+
+    color: #42251A;
+}
+
+.login{
+    margin-top: 20px;
+}
+
+.copyright{
+    margin-top: 30px;
+}
