@@ -19,13 +19,19 @@
                 <input type="email" placeholder="Email"> 
                 <p class="password">Password</p>   
                 <input type="password" placeholder="Password">
-                <img src="assets/logo-login.png" width="50px" class="gambar-captcha">
-                <p class="captcha">Captcha</p>
-                <input type="text" placeholder="Captcha">
-                <input type="submit" value="Login" name="Login" class="btn-login">
+                <div class="captcha-area">
+                    <div class="captcha-image">
+                        <img src="assets/captcha-background.jpg" class="gambar-captcha">
+                        <span class="captcha-text"></span>
+                    </div>
+                    <p class="captcha">Captcha</p>
+                    <input type="text" placeholder="Masukkan captcha...">    
+                </div>
+                <input class="captcha-input" type="submit" value="Login" name="Login" class="btn-login">
             </div>
             <p class="register">Anda belum terdaftar sebagai penjual?<a href="register.html" style="text-decoration: none; color: black; font-weight: bolder;"><br>Register</a> </p>
         </div>
     </div>
+<script src="scripts/login.js"></script>
 </body>
 </html>
