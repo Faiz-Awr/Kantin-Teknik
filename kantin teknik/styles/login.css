@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Poppins';
 }
-
 
 .main-container{
     display: flex;
@@ -67,15 +65,38 @@
     font-weight: bold;
 }
 
-.captcha{
+.captcha-area .captcha-image{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.captcha-image .captcha-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: #42251A;
+    font-weight: bold;
+    z-index: 1;
+}
+.captcha-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.captcha-input {
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 5px;
     font-weight: bold;
-}
-
-.gambar-captcha{ 
-    margin-top: 20px;
-    align-self: center;
 }
 
 .btn-login{
@@ -98,6 +119,7 @@ input{
     border-radius: 5px;
     padding: 5px;
     border-color: #A78181;
+    width: 100%;
 }
 
 input:focus{
@@ -123,7 +145,6 @@ p{
         transform: translateY(0);
     }
 }
-
 
 .container-form > *{
     animation: fadeSlideIn 0.6s ease-out;
