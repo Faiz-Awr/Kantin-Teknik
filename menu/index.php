@@ -1,7 +1,27 @@
 <?php
     require '../phpProcesses/functions.php';
+    session_start();
+    
+    if(!isset($_SESSION['temp_menu_data'])){
+        $data = getMenu();
+        $_SESSION['temp_menu_data'] = $data;
+    }
 
-    $data = getMenu();
+    print_r($_SESSION['temp_menu_data']);
+
+    if(isset($_POST['save_changes'])){
+        if (sendPayload($_SESSION['temp_menu_data'])) {
+            unset($_SESSION['temp_menu_data']);
+            header('Location: ../menu');
+        } else {
+            echo 'Simpan perubahan gagal';
+        }
+    }
+
+    if(isset($_POST['cancel_changes'])){
+        unset($_SESSION['temp_menu_data']);
+        header('Location: ../menu');
+    }
 ?>
 
 
@@ -25,22 +45,25 @@
     <section class="judul">
         <div class="judul-content">
             <h1>Edit Menu</h1>
-            <button><div>
-                <span>Batalkan Perubahan</span>
-            </div></button>
-            <button><div>
-                <span>Simpan Perubahan</span>
-            </div></button>    
+            <form action="index.php" method="post">
+                <button type="submit" name="cancel_changes"><div>
+                    <span>Batalkan Perubahan</span>
+                </div></button>
+                <button type="submit" name="save_changes"><div>
+                    <span>Simpan Perubahan</span>
+                </div></button>    
+            </form>
         </div>
         <hr>
     </section>
     <section class="edit">
-        <a href="" class="tambah-menu">
+        <a href="../tambah/" class="tambah-menu">
             <div>
                 <img src="../assets/plus-sm.png" alt="">
             </div>
         </a>
-        <?php foreach($data as $menu) : ?>
+
+        <?php foreach($_SESSION['temp_menu_data'] as $menu) : ?>
         <div class="detail-menu">
             <div>
                 <img src="../img/<?php echo $menu['foto']?>" alt="placeholder">
@@ -56,6 +79,7 @@
             </a>
         </div>
         <?php endforeach; ?>
+
     </section>
     <section class="footer">
         <hr>

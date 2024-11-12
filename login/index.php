@@ -1,10 +1,14 @@
 <?php
     require '../phpProcesses/functions.php';
+    session_start();
+
     if(isset($_POST['Login'])){
         if(login($_POST)){
-            header('Location: ../register');
+            header('Location: ../berandaadmin.php');
         } else {
-            header('Location: ../register');
+            echo '<script>alert("Login gagal")
+            document.location.href = "#";
+            </script>';
         }
     }
 ?>

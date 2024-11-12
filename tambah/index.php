@@ -1,5 +1,7 @@
 <?php
     require '../phpProcesses/functions.php';
+    session_start();
+
     if(isset($_POST['tambah'])){
         if(addMenu($_POST, $_FILES)){
             header('Location: ../menu');
@@ -25,8 +27,8 @@
         </header>
         
         <div class="form-container">
-            <h1>Tambah Menu</h1>
-            <form action="index.php" method="post" enctype="multipart/form-data">
+        <h1>Tambah Menu</h1>
+        <form action="index.php" method="post" enctype="multipart/form-data">
             <div class="form-content">
                 <div class="image-upload">
                     <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
@@ -43,6 +45,10 @@
                             document.querySelector('.upload-icon').style.display = 'none';
                         }
                         reader.readAsDataURL(event.target.files[0]);
+                    });
+
+                    document.getElementById('imagePreview').addEventListener('click', function() {
+                        document.getElementById('imageInput').click();
                     });
                 </script>
 
@@ -64,8 +70,13 @@
             </form>
             </div>
             <button type="button" class="back-button">Kembali</button>
-        </div>
         <footer>Copyright &copy;  2024 KantinTeknik</footer>
     </section>
+
+    <script>
+        document.querySelector('.back-button').addEventListener('click', function() {
+            window.location.href = '../menu';
+        });
+    </script>
 </body>
 </html>

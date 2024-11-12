@@ -1,16 +1,28 @@
 <?php
     require '../phpProcesses/functions.php';
+    session_start();
 
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $menu = findMenu($id);
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    foreach ($_SESSION['temp_menu_data'] as  $menu) {
+        if ($menu['id'] == $id) {
+            $menu = $menu;
+            break;
+        }
     }
+    
+    if (isset($_POST['ubah'])) {
+        $id = $_POST['id'] ?? $id;
+        $fotoLama = $_POST['foto_lama'];
 
-    if(isset($_POST['ubah'])){
-        if(updateMenu($_POST, $_FILES, $id)){
+        if (updateMenu($_POST, $_FILES, $id, $fotoLama)) {
             header('Location: ../menu');
+            exit;
         } else {
-            echo 'Ubah menu gagal';
+            echo
+            '<script>alert("Ubah menu gagal")
+            document.location.href = "index.php?id='.$id.'";
+            </script>';
+            exit;
         }
     }
 ?>
@@ -32,13 +44,32 @@
         
         <div class="form-container">
             <h1>Ubah Menu</h1>
-            <form action="index.php" method="post" enctype="multipart/form-data">
+            <form action="index.php" method="post" enctype="multipart/form-data">   
+            <input type="hidden" name="id" value="<?= $id ?>">
+            <input type="hidden" name="foto_lama" value="<?= $menu['foto'] ?>">
             <div class="form-content">
                 <div class="image-upload">
-                    <button class="upload-icon">
-                        <img src="../img/<?php echo $menu['foto']?>" alt="Image Preview" style="max-width: 100px; max-height: 100px;">
-                    </button>
+                    <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
+                    <button type="button" class="upload-icon" onclick="document.getElementById('imageInput').click();"></button>
+                    <img id="imagePreview" src="../img/<?php echo $menu['foto']; ?>" alt="Image Preview" style="display: block; max-width: 100px; max-height: 100px;">
                 </div>
+                <script>
+                    document.getElementById('imageInput').addEventListener('change', function(event) {
+                        var reader = new FileReader();
+                        reader.onload = function() {
+                            var preview = document.getElementById('imagePreview');
+                            preview.src = reader.result;
+                            preview.style.display = 'block';
+                            document.querySelector('.upload-icon').style.display = 'none';
+                        }
+                        reader.readAsDataURL(event.target.files[0]);
+                    });
+
+                    document.getElementById('imagePreview').addEventListener('click', function() {
+                        document.getElementById('imageInput').click();
+                    });
+                </script>
+
                 <div class="menu-form">
                     <label><b>Nama Menu</b></label>
                     <input type="text" placeholder="<?php echo $menu['nama']?>" value="<?php echo $menu['nama']?>" name="nama_menu">
@@ -52,13 +83,19 @@
                         <option value="minuman" <?php echo $menu['kategori'] == 'minuman' ? 'selected' : '';?>>Minuman</option>
                     </select>
                     
-                    <button type="submit" class="add-button">Ubah</button>
+                    <button type="submit" class="add-button" name="ubah">Ubah</button>
                 </div>
             </div>
             </form>
-            <button type="button" class="back-button">Kembali</button>
+            <button type="button" class="back-button" >Kembali</button>
         </div>
         <footer>Copyright &copy;  2024 KantinTeknik</footer>
     </section>
+
+    <script>
+        document.querySelector('.back-button').addEventListener('click', function() {
+            window.location.href = '../menu';
+        });
+    </script>
 </body>
 </html>
