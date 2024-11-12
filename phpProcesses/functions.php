@@ -51,4 +51,89 @@
             return false;
         }
     }
+
+    function upload($data, $files, $fotoLama = 'NULL'){
+        $namaFile = $files['image']['name'];
+        $ukuranFile = $files['image']['size'];
+        $error = $files['image']['error'];
+        $tmpName = $files['image']['tmp_name'];
+
+        if($error === 4){
+            echo "<script>alert('Pilih gambar terlebih dahulu')</script>";
+            return false;
+        }
+
+        $ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'webp'];
+        $ekstensiGambar = explode('.', $namaFile);
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+        if(!in_array($ekstensiGambar, $ekstensiGambarValid)){
+            echo "<script>alert('File yang diupload bukan gambar')</script>";
+            return false;
+        }
+
+        if($ukuranFile > 10000000){
+            echo "<script>alert('Ukuran gambar terlalu besar')</script>";
+            return false;
+        }
+
+        if (file_exists('img/' . $fotoLama)) {
+            unlink('img/' . $fotoLama);
+        }
+
+        $namaFileBaru = uniqid();
+        $namaFileBaru .= '.';
+        $namaFileBaru .= $ekstensiGambar;
+
+        move_uploaded_file($tmpName, '../img/' . $namaFileBaru);
+        return $namaFileBaru;
+    }
+
+    function addMenu($data, $files){
+        $conn = connection();
+        $nama_menu = $data['nama_menu'];
+        $harga = $data['harga'];
+        $kategori = $data['kategori'];
+        $foto = upload($data, $files);
+
+        if(!$foto){
+            return false;
+        }
+
+        $query = "INSERT INTO menu (nama, harga, kategori, foto) VALUES ('$nama_menu', '$harga', '$kategori', '$foto')";
+        if(mysqli_query($conn, $query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function listMenu(){
+        $conn = connection();
+        $query = "SELECT * FROM menu";
+        $result = mysqli_query($conn, $query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        return $data;
+    }
+    
+    function updateMenu($data, $files){
+        $conn = connection();
+        
+        $id = $data['id'];
+        $nama_menu = $data['nama_menu'];
+        $harga = $data['harga'];
+        $kategori = $data['kategori'];
+        $foto = upload($data, $_FILES, $data['foto']);
+        
+        $query = "UPDATE menu SET nama_menu='$nama_menu', harga='$harga', kategori='$kategori', foto='$foto' WHERE id='$id'";
+        
+        if(mysqli_query($conn, $query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 ?>
