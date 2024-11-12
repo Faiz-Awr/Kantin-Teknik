@@ -1,5 +1,5 @@
 <?php
-    require 'functions.php';
+    require '../phpProcesses/functions.php';
     if(isset($_POST['register'])){
         if (strlen($_POST['password']) < 8) {
             echo '<script>alert("Password minimal 8 karakter");</script>';
@@ -12,12 +12,11 @@
         }
 
         if(register($_POST)){
-            header('Location: login.php');
+            header('Location: ../login');
         } else {
             echo 'Register gagal';
         }
     }
-    
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +25,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="../styles/register.css">
 </head>
 <body>
     <form action="register.php" method="POST">
     <div class="main-container">
-        <img src="assets/logo-login.png" width="100px" class="logo">
+        <img src="../assets/logo-login.png" width="100px" class="logo">
         <div class="register-form">
                 <p class="header">Form Registrasi</p>
                 <p class="nama-lengkap">Nama Lengkap</p>
