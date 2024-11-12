@@ -108,7 +108,7 @@
         }
     }
 
-    function listMenu(){
+    function getMenu(){
         $conn = connection();
         $query = "SELECT * FROM menu";
         $result = mysqli_query($conn, $query);
@@ -118,15 +118,21 @@
         }
         return $data;
     }
-    
-    function updateMenu($data, $files){
+
+    function findMenu($id){
         $conn = connection();
-        
-        $id = $data['id'];
+        $query = "SELECT * FROM menu WHERE id='$id'";
+        $result = mysqli_query($conn, $query);
+        $data = mysqli_fetch_assoc($result);
+        return $data;
+    }
+    
+    function updateMenu($data, $files, $id){
+        $conn = connection();
         $nama_menu = $data['nama_menu'];
         $harga = $data['harga'];
         $kategori = $data['kategori'];
-        $foto = upload($data, $_FILES, $data['foto']);
+        $foto = upload($data, $files, $data['foto']);
         
         $query = "UPDATE menu SET nama_menu='$nama_menu', harga='$harga', kategori='$kategori', foto='$foto' WHERE id='$id'";
         

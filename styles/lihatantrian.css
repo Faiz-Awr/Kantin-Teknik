@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3E6E1;
+    font-family: 'poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+hr {
+    margin: 0 5%;
+    border: 1px solid #D24511;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D24511;
+    top: 0;
+    margin-bottom: 20px;
+    height: 60px;
+    padding: 5px 5%;
+}
+
+.navbar img {
+    height: 90%;
+    margin: auto 0;
+}
+
+.navbar a {
+    margin: auto 0;
+    text-decoration: none;
+}
+
+.navbar a div {
+    display: flex;
+    background-color: #42251A;
+    height: 45px;
+    width: 100px;
+    border-radius: 15px;
+}
+.navbar a div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}
+
+.tombol-edit {
+    margin-top: 2px;
+    height: 20px;
+    width: 100%;
+    text-decoration: none;
+}
+
+.tombol-edit div {
+    display: flex;
+    background-color: #42251A;
+    
+    border-radius: 15px;
+}
+.tombol-edit div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}
+
+.judul {
+    display: flex;
+    justify-content: center;
+}
+
+.judul h1 {
+    margin: 0;
+    font-size: 3em;
+    font-weight: 700;
+    color: #D24511;
+}
+
+.footer {
+    margin: 0px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5%;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-content p {
+    text-align: center;
+    margin: 10px;
+    font-size: 12px;
+}
+
+.footer-content a {
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.footer-content a div {
+    display: flex;
+    background-color: #D24511;
+    height: 45px;
+    width: 100px;
+    border-radius: 15px;
+}
+.footer-content a div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}

@@ -1,7 +1,13 @@
 <?php
     require '../phpProcesses/functions.php';
+
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $menu = findMenu($id);
+    }
+
     if(isset($_POST['ubah'])){
-        if(updateMenu($_POST)){
+        if(updateMenu($_POST, $_FILES, $id)){
             header('Location: ../menu');
         } else {
             echo 'Ubah menu gagal';
@@ -26,27 +32,30 @@
         
         <div class="form-container">
             <h1>Ubah Menu</h1>
+            <form action="index.php" method="post" enctype="multipart/form-data">
             <div class="form-content">
                 <div class="image-upload">
-                    <button class="upload-icon">&#11014;</button>
+                    <button class="upload-icon">
+                        <img src="../img/<?php echo $menu['foto']?>" alt="Image Preview" style="max-width: 100px; max-height: 100px;">
+                    </button>
                 </div>
-                <form class="menu-form">
+                <div class="menu-form">
                     <label><b>Nama Menu</b></label>
-                    <input type="text" placeholder="placeholder" name="nama_menu">
+                    <input type="text" placeholder="<?php echo $menu['nama']?>" value="<?php echo $menu['nama']?>" name="nama_menu">
                     
                     <label><b>Harga</b></label>
-                    <input type="text" placeholder="placeholder" name="harga">
+                    <input type="text" placeholder="<?php echo $menu['harga']?>" value="<?php echo $menu['harga']?>" name="harga">
                     
                     <label><b>Kategori</b></label>
                     <select name="kategori">
-                        <option value="makanan_berat">Makanan Berat</option>
-                        <option value="makanan_ringan">Makanan Ringan</option>
-                        <option value="minuman">Minuman</option>
+                        <option value="makanan" <?php echo $menu['kategori'] == 'makanan' ? 'selected' : '';?>>Makanan</option>
+                        <option value="minuman" <?php echo $menu['kategori'] == 'minuman' ? 'selected' : '';?>>Minuman</option>
                     </select>
                     
                     <button type="submit" class="add-button">Ubah</button>
-                </form>
+                </div>
             </div>
+            </form>
             <button type="button" class="back-button">Kembali</button>
         </div>
         <footer>Copyright &copy;  2024 KantinTeknik</footer>
