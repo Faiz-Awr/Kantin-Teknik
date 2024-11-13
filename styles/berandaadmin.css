@@ -36,6 +36,13 @@ body {
     width: 100px;
     border-radius: 15px;
 }
+
+.navbar a div:hover{
+    transform: scale(0.95);
+    background-color: #42251a;
+    transition: 0.4s;
+    color: #d24511;
+}
 .navbar a div span {
     font-size: 1.25em;
     font-weight: 600;
@@ -95,10 +102,14 @@ body {
     background-color: #42251A;
     color: #ECCDC2;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     cursor: pointer;
     transition: 0.3s;
     text-align: center;
+}
+
+.list-menu-admin:hover{
+    transform: translateY(-20px);
 }
 
 .list-menu-admin h2 {
@@ -127,6 +138,12 @@ body {
     height: 45px;
     width: 100px;
     border-radius: 15px;
+}
+.keluar-button div:hover{
+    transform: scale(0.95);
+    background-color: #42251a;
+    transition: 0.4s;
+    color: #d24511;
 }
 .keluar-button div span {
     font-size: 1.25em;
