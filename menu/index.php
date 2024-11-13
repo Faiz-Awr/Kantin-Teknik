@@ -55,8 +55,14 @@
     <link rel="stylesheet" href="../styles/editmenu.css">
 </head>
 <body>
-
-
+    <header class="navbar">
+        <img src="assets/logo.png" alt="">
+        <a href="https://www.google.com">
+            <div>
+                <span>Log Out</span>
+            </div>
+        </a>
+    </header>
     <section class="judul">
         <div class="judul-content">
             <h1>Edit Menu</h1>
