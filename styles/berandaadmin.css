@@ -1,0 +1,159 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3E6E1;
+    font-family: 'poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D24511;
+    top: 0;
+    margin-bottom: auto;
+    height: 60px;
+    padding: 5px 5vw;
+}
+
+.navbar img {
+    height: 90%;
+    margin: auto 0;
+}
+
+.navbar a {
+    margin: auto 0;
+    text-decoration: none;
+}
+
+.navbar a div {
+    display: flex;
+    background-color: #42251A;
+    height: 45px;
+    width: 100px;
+    border-radius: 15px;
+}
+.navbar a div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}
+
+.judul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.judul h2 {
+    font-size: 2.5em;
+    font-weight: 400;
+    color: #42251A;
+    margin: 0;
+    padding: 0;
+}
+
+.judul h1 {
+    font-size: 3.5em;
+    font-weight: 800;
+    color: #42251A;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 0;
+    align-content: center;
+}
+
+.menu-admin {
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    align-content: center;
+}
+
+.link-menu-admin {
+    text-decoration: none;
+}
+
+.list-menu-admin {
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 10px 20px;
+    width: 175px;
+    height: 175px;
+    background-color: #42251A;
+    color: #ECCDC2;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.list-menu-admin h2 {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.icon-menu-admin {
+    margin: 10px;
+    color: #333;
+}
+
+.icon-menu-admin img {
+    width: 100px;
+    height: 100px;
+}
+
+.keluar-button {
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+.keluar-button div {
+    display: flex;
+    background-color: #D24511;
+    height: 45px;
+    width: 100px;
+    border-radius: 15px;
+}
+.keluar-button div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}
+
+.footer {
+    margin: 0px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer p {
+    text-align: center;
+    margin: 10px;
+    font-size: 12px;
+}
+
+.kontak {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.kontak p {
+    margin: 5px;
+}

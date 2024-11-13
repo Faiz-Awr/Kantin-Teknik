@@ -1,0 +1,186 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3E6E1;
+    font-family: 'poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+hr {
+    margin: 0 5%;
+    border: 1px solid #D24511;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D24511;
+    top: 0;
+    margin-bottom: 1%;
+    height: 60px;
+    padding: 5px 10%;
+}
+
+.navbar img {
+    height: 90%;
+    margin: auto 0;
+}
+
+.navbar a {
+    margin: auto 0;
+    text-decoration: none;
+}
+
+.navbar a div {
+    display: flex;
+    background-color: #42251A;
+    height: 45px;
+    width: 100px;
+    border-radius: 15px;
+}
+.navbar a div span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
+}
+
+.profil {
+    display: flex;
+    flex-direction: column;
+    background-color: #ECCDC2;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.profil h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #D24511;
+    margin: 0 0 10px 0;
+}
+
+.inputan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin: 0 10% 0 10%;
+}
+.kiri {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5px;
+}
+.photo img {
+    border: 1px solid #42251A;
+    border-radius: 10px;
+}
+
+.upload-photo button{
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 210px;
+}
+
+.tombol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.tombol button {
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 210px;
+}
+
+.tombol a {
+    text-decoration: none;
+    color: #F3E6E1;
+    text-align: center;
+    font-size: 1.20em;
+    font-weight: 600;
+    background-color: #42251A;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px 2%;
+    width: 200px;
+}
+.tombol .logout {
+    background-color: #D24511;
+}
+
+.kanan {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 5%;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: 1px 0;
+}
+.input input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D14A24;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 1px auto;
+    max-width: -webkit-fill-available;
+    height: 13px;
+}
+
+.input label {
+    font-size: 1.20em;
+    font-weight: 600;
+    color: #42251A;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    color: #42251A;
+    margin-right: 34%;
+}
+
+.judul {
+    display: flex;
+    justify-content: center;
+}
+
+.judul h1 {
+    margin: 0;
+    font-size: 3em;
+    font-weight: 700;
+    color: #D24511;
+}
