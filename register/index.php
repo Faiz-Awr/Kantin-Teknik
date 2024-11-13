@@ -2,19 +2,32 @@
     require '../phpProcesses/functions.php';
     if(isset($_POST['register'])){
         if (strlen($_POST['password']) < 8) {
-            echo '<script>alert("Password minimal 8 karakter");</script>';
-            return;
+            echo '<script>
+            alert("Password minimal 8 karakter");
+            document.location.href = "../register";
+            </script>';
         }
 
         if ($_POST['password'] != $_POST['konfirmasi_password']) {
-            echo '<script>alert("Password tidak sama");</script>';
-            return;
+            echo '<script>
+            alert("Password tidak sama");
+            document.location.href = "../register";
+            </script>';
         }
 
-        if(register($_POST)){
+        if(register($_POST) == 1){
             header('Location: ../login');
+            exit();
+        } else if (register($_POST) == -1) {
+            echo '<script>
+            alert("Email sudah terdaftar");
+            document.location.href = "../register";
+            </script>';
         } else {
-            echo 'Register gagal';
+            echo '<script>
+            alert("Register gagal");
+            document.location.href = "../register";
+            </script>';
         }
     }
 ?>
@@ -28,7 +41,7 @@
     <link rel="stylesheet" href="../styles/register.css">
 </head>
 <body>
-    <form action="register.php" method="POST">
+    <form action="index.php" method="POST">
     <div class="main-container">
         <img src="../assets/logo-login.png" width="100px" class="logo">
         <div class="register-form">
@@ -53,7 +66,7 @@
             </div>
             <input type="submit" value="Register" name="register" class="btn-register">
         </div>
-        <p class="login">Anda sudah terdaftar sebagai penjual?  <a href="login.php" style="text-decoration: none; color: black; font-weight: bolder;">Login</a></p>
+        <p class="login">Anda sudah terdaftar sebagai penjual?  <a href="../login" style="text-decoration: none; color: black; font-weight: bolder;">Login</a></p>
         <p class="copyright">Copyright © 2024 KantinTeknik</p>
     </div>
     </form>
