@@ -9,7 +9,7 @@
 <body>
     <header class="navbar">
         <img src="assets/logo.png" alt="">
-        <a href="https://www.google.com">
+        <a href="berandaadmin.php">
             <div>
                 <span>Log Out</span>
             </div>

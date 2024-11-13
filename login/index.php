@@ -5,10 +5,12 @@
     if(isset($_POST['Login'])){
         if(login($_POST)){
             header('Location: ../berandaadmin.php');
+            exit();
         } else {
-            echo '<script>alert("Login gagal")
-            document.location.href = "#";
-            </script>';
+            echo '<script>
+                    alert("Login gagal");
+                    document.location.href = "../login";
+                  </script>';
         }
     }
 ?>
@@ -23,7 +25,7 @@
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
-    <form action="login.php" method="POST">
+    <form action="index.php" method="POST">
     <div class="main-container">   
         <div class="container-foto">
                 <img src="../assets/foto-login.png" width="100%">
@@ -46,7 +48,7 @@
                 </div>
                 <input class="captcha-input" type="submit" value="Login" name="Login" class="btn-login">
             </div>
-            <p class="register">Anda belum terdaftar sebagai penjual?<a href="register.php" style="text-decoration: none; color: black; font-weight: bolder;"><br>Register</a> </p>
+            <p class="register">Anda belum terdaftar sebagai penjual?<a href="../register" style="text-decoration: none; color: black; font-weight: bolder;"><br>Register</a> </p>
         </div>
     </div>
     </form>

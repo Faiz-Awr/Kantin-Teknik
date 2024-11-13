@@ -5,6 +5,7 @@
     if(isset($_POST['tambah'])){
         if(addMenu($_POST, $_FILES)){
             header('Location: ../menu');
+            exit();
         } else {
             echo 'Tambah menu gagal';
         }

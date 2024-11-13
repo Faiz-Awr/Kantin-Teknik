@@ -57,7 +57,7 @@
         }
     }
 
-    function upload($files, $fotoLama) {
+    function upload($files, $fotoLama = null) {
         $namaFile = $files['image']['name'];
         $ukuranFile = $files['image']['size'];
         $error = $files['image']['error'];
@@ -80,15 +80,20 @@
             echo "<script>alert('Ukuran gambar terlalu besar')</script>";
             return false;
         }
-
-        if ($fotoLama !== 'NULL' && file_exists('../img/' . $fotoLama)) {
-            unlink('../img/' . $fotoLama);
-        }
     
+        // Generate a new unique name for the temporary image
         $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     
-        if (move_uploaded_file($tmpName, '../img/' . $namaFileBaru)) {
-            return $namaFileBaru;
+        // Move the uploaded file to the temporary directory
+        if (move_uploaded_file($tmpName, '../img_temp/' . $namaFileBaru)) {
+            // If there's an old image and it's different from the new one, mark it for deletion
+            if ($fotoLama && file_exists('../img/' . $fotoLama)) {
+                if (!isset($_SESSION['files_to_delete'])) {
+                    $_SESSION['files_to_delete'] = [];
+                }
+                $_SESSION['files_to_delete'][] = $fotoLama;
+            }
+            return $namaFileBaru; // Return the new temporary image name
         } else {
             echo "<script>alert('Gagal mengupload gambar')</script>";
             return false;
@@ -123,7 +128,7 @@
 
     function getMenu(){
         $conn = connection();
-        $query = "SELECT * FROM menu";
+        $query = "SELECT * FROM menu WHERE id_penjual=".$_SESSION['id'];
         $result = mysqli_query($conn, $query);
         $data = [];
         while($row = mysqli_fetch_assoc($result)){
@@ -171,14 +176,14 @@
 
     function sendPayload($data) {
         $conn = connection();
-    
+
         foreach ($_SESSION['temp_menu_data'] as $menu) {
             $nama = $menu['nama'];
             $harga = $menu['harga'];
             $kategori = $menu['kategori'];
             $foto = $menu['foto'];
             $id = $menu['id'];
-    
+
             // Step 1: Check if the record exists
             $checkQuery = "SELECT id FROM menu WHERE id = ?";
             $stmt = mysqli_prepare($conn, $checkQuery);
@@ -191,8 +196,8 @@
                 // Step 2: Perform the update if the item exists
                 $updateQuery = "UPDATE menu SET nama = ?, harga = ?, kategori = ?, foto = ? WHERE id = ?";
                 $updateStmt = mysqli_prepare($conn, $updateQuery);
-                mysqli_stmt_bind_param($updateStmt, 'sssii', $nama, $harga, $kategori, $foto, $id);
-    
+                mysqli_stmt_bind_param($updateStmt, 'ssssi', $nama, $harga, $kategori, $foto, $id); // Corrected to 'ssssi'
+
                 if (!mysqli_stmt_execute($updateStmt)) {
                     return false; // Return false if the update fails
                 }
@@ -201,13 +206,69 @@
                 $insertQuery = "INSERT INTO menu (nama, harga, kategori, foto) VALUES (?, ?, ?, ?)";
                 $insertStmt = mysqli_prepare($conn, $insertQuery);
                 mysqli_stmt_bind_param($insertStmt, 'ssss', $nama, $harga, $kategori, $foto);
-    
+
                 if (!mysqli_stmt_execute($insertStmt)) {
                     return false; // Return false if the insert fails
                 }
             }
         }
+
+        moveFiles(); // Move the files from /img_temp/ to /img/
+        return true;
+    }
+
+    function moveFiles() {
+        if (!isset($_SESSION['temp_menu_data'])) {
+            return;
+        }
     
-        return true; // If everything is successful
+        $tempDir = '../img_temp/';
+        $imgDir = '../img/';
+    
+        // Check if directories exist and are writable
+        if (!is_dir($tempDir) || !is_writable($tempDir)) {
+            echo "<script>alert('img_temp directory is missing or not writable.');</script>";
+            return;
+        }
+    
+        if (!is_dir($imgDir) || !is_writable($imgDir)) {
+            echo "<script>alert('img directory is missing or not writable.');</script>";
+            return;
+        }
+    
+        foreach ($_SESSION['temp_menu_data'] as $menu) {
+            $foto = $menu['foto'];
+            $fotoLama = $menu['foto_lama'] ?? null;
+    
+            if ($foto && $foto !== $fotoLama) {
+                $tempFilePath = $tempDir . $foto;
+                $imgFilePath = $imgDir . $foto;
+    
+                if (file_exists($tempFilePath)) {
+                    if (rename($tempFilePath, $imgFilePath)) {
+                        echo "<script>console.log('Moved $foto from img_temp to img successfully.');</script>";
+                    } else {
+                        // Fallback to copy and unlink if rename fails
+                        if (copy($tempFilePath, $imgFilePath) && unlink($tempFilePath)) {
+                            echo "<script>console.log('Moved $foto using copy and delete.');</script>";
+                        } else {
+                            echo "<script>console.log('Failed to move $foto.');</script>";
+                        }
+                    }
+                } else {
+                    echo "<script>console.log('File $foto not found in img_temp.');</script>";
+                }
+            }
+        }
+    
+        if (isset($_SESSION['files_to_delete'])) {
+            foreach ($_SESSION['files_to_delete'] as $oldFoto) {
+                $oldFilePath = $imgDir . $oldFoto;
+                if (file_exists($oldFilePath) && unlink($oldFilePath)) {
+                    echo "<script>console.log('Deleted old file: $oldFoto');</script>";
+                }
+            }
+            unset($_SESSION['files_to_delete']);
+        }
     }
 ?>

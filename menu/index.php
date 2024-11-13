@@ -7,20 +7,43 @@
         $_SESSION['temp_menu_data'] = $data;
     }
 
+    foreach ($_SESSION['temp_menu_data'] as &$menu) {
+        if (!isset($menu['foto_lama'])) {
+            $menu['foto_lama'] = $menu['foto'] ?? ''; // Assign current 'foto' or an empty string as default
+        }
+    }
+    unset($menu); // break reference with the last element
+
     print_r($_SESSION['temp_menu_data']);
 
     if(isset($_POST['save_changes'])){
         if (sendPayload($_SESSION['temp_menu_data'])) {
             unset($_SESSION['temp_menu_data']);
-            header('Location: ../menu');
+            header('Location: ../berandaadmin.php');
+            exit();
         } else {
             echo 'Simpan perubahan gagal';
         }
     }
 
     if(isset($_POST['cancel_changes'])){
+        $tempDir = '../img_temp/';
+    
+        // Check if the directory exists
+        if (is_dir($tempDir)) {
+            // Get all files in the directory
+            $files = glob($tempDir . '*'); // Grabs all files in the directory
+
+            // Loop through each file and delete it
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
+            }
+        }
         unset($_SESSION['temp_menu_data']);
-        header('Location: ../menu');
+        header('Location: ../berandaadmin.php');
+        exit();
     }
 ?>
 
@@ -66,7 +89,7 @@
         <?php foreach($_SESSION['temp_menu_data'] as $menu) : ?>
         <div class="detail-menu">
             <div>
-                <img src="../img/<?php echo $menu['foto']?>" alt="placeholder">
+                <img src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="placeholder">
                 <span><?php echo $menu['nama']?></span>
                 <p><?php $menu['kategori']?></p>
                 <p><?php $menu['harga']?></p>

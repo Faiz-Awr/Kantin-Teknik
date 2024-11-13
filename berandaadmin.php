@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header('Location: login');
+        exit();
+    }
+
+    if(isset($_SESSION['temp_menu_data'])){
+        unset($_SESSION['temp_menu_data']);
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +23,15 @@
 <body>
     <header class="navbar">
         <img src="assets/logo.png" alt="">
-        <a href="https://www.google.com">
+        <a href="berandaadmin.php">
             <div>
                 <span>Log Out</span>
             </div>
         </a>
     </header>
     <section class="judul">
-        <h2>Selamat Datang Nama Penjual</h2>
-        <h1>Nama Kantin</h1>
+        <h2>Selamat Datang <?php echo $_SESSION['nama_lengkap']?></h2>
+        <h1><?php echo $_SESSION['nama_kantin']?></h1>
     </section>
     <section class="menu">
         <div class="menu-admin">
@@ -29,7 +43,7 @@
                     <h2>Profil Penjual</h2>
                 </div> 
             </a>
-            <a href="editmenu.php" class="link-menu-admin">
+            <a href="menu" class="link-menu-admin">
                 <div class="list-menu-admin">
                     <div class="icon-menu-admin">
                         <img src="assets/pencil-square.png" alt="">
