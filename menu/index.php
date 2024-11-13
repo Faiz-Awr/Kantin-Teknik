@@ -14,8 +14,6 @@
     }
     unset($menu); // break reference with the last element
 
-    print_r($_SESSION['temp_menu_data']);
-
     if(isset($_POST['save_changes'])){
         if (sendPayload($_SESSION['temp_menu_data'])) {
             unset($_SESSION['temp_menu_data']);
@@ -57,14 +55,8 @@
     <link rel="stylesheet" href="../styles/editmenu.css">
 </head>
 <body>
-    <header class="navbar">
-        <img src="../assets/logo.png" alt="">
-        <a href="https://www.google.com">
-            <div>
-                <span>Log Out</span>
-            </div>
-        </a>
-    </header>
+
+
     <section class="judul">
         <div class="judul-content">
             <h1>Edit Menu</h1>

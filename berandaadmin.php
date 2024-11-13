@@ -21,14 +21,7 @@
     <link rel="stylesheet" href="styles/berandaadmin.css">
 </head>
 <body>
-    <header class="navbar">
-        <img src="assets/logo.png" alt="">
-        <a href="berandaadmin.php">
-            <div>
-                <span>Log Out</span>
-            </div>
-        </a>
-    </header>
+    <?php include("navbar.php")?>
     <section class="judul">
         <h2>Selamat Datang <?php echo $_SESSION['nama_lengkap']?></h2>
         <h1><?php echo $_SESSION['nama_kantin']?></h1>

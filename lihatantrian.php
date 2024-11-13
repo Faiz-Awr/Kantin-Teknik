@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="styles/lihatantrian.css">
 </head>
 <body>
-    <header class="navbar">
-        <img src="assets/logo.png" alt="">
-        <a href="berandaadmin.php">
-            <div>
-                <span>Log Out</span>
-            </div>
-        </a>
-    </header>
+    <?php include('navbar.php')?>
     <section class="judul">
         <h1>Antrain Pesanan</h1>
     </section>

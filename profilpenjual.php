@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="styles/profilpenjual.css">
 </head>
 <body>
-    <header class="navbar">
-        <img src="assets/logo.png" alt="">
-        <a href="berandaadmin.php">
-            <div>
-                <span>Log Out</span>
-            </div>
-        </a>
-    </header>
+    <?php include("navbar.php")?>
     <section class="profil">
         <h1>Profile Penjual</h1>
         <div class="inputan">
