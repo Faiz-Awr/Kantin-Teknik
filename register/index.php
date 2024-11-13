@@ -15,9 +15,14 @@
             </script>';
         }
 
-        if(register($_POST)){
+        if(register($_POST) == 1){
             header('Location: ../login');
             exit();
+        } else if (register($_POST) == -1) {
+            echo '<script>
+            alert("Email sudah terdaftar");
+            document.location.href = "../register";
+            </script>';
         } else {
             echo '<script>
             alert("Register gagal");

@@ -45,7 +45,7 @@
         $result = mysqli_query($conn, $check);
         
         if(mysqli_num_rows($result) > 0){
-            return false;
+            return -1;
         }
 
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
