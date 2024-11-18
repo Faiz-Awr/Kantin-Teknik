@@ -1,6 +1,6 @@
 <?php
     function connection(){
-        $conn = mysqli_connect('localhost:3307','root','','dbspring');
+        $conn = mysqli_connect('localhost:3306','root','','dbspring');
         if(!$conn){
             die('Connection failed'.mysqli_connect_error());
         }

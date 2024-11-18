@@ -2,15 +2,30 @@
     require '../phpProcesses/functions.php';
     session_start();
 
-    if(isset($_POST['Login'])){
-        if(login($_POST)){
-            header('Location: ../berandaadmin.php');
-            exit();
-        } else {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $inputCaptcha = isset($_POST['captcha_input']) ? str_replace(' ', '', $_POST['captcha_input']) : '';
+        $generatedCaptcha = isset($_POST['captcha_hidden']) ? str_replace(' ', '', $_POST['captcha_hidden']) : '';
+    
+        if ($inputCaptcha != $generatedCaptcha) {
             echo '<script>
-                    alert("Login gagal");
+                    alert("Captcha salah");
                     document.location.href = "../login";
                   </script>';
+            exit();
+        }
+
+
+        if(isset($_POST['Login'])){
+            if(login($_POST)){
+                header('Location: ../berandaadmin.php');
+                exit();
+            } else {
+                echo '<script>
+                        alert("Login gagal");
+                        document.location.href = "../login";
+                    </script>';
+            }
         }
     }
 ?>
@@ -28,7 +43,7 @@
     <form action="index.php" method="POST">
     <div class="main-container">   
         <div class="container-foto">
-                <img src="../assets/foto-login.png" width="100%">
+                <img src="../assets/foto-login.png">
             </div>
             <div class="container-form">
             <img src="../assets/logo-login.png" class="logo">
@@ -44,7 +59,8 @@
                         <span class="captcha-text"></span>
                     </div>
                     <p class="captcha">Captcha</p>
-                    <input type="text" placeholder="Masukkan captcha...">    
+                    <input type="text" placeholder="Masukkan captcha..." name="captcha_input" required> 
+                    <input type="hidden" name="captcha_hidden" class="captcha-hidden">
                 </div>
                 <input class="captcha-input" type="submit" value="Login" name="Login" class="btn-login">
             </div>
