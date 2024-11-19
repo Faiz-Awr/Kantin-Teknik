@@ -45,7 +45,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,18 +85,20 @@
 
         <?php foreach($_SESSION['temp_menu_data'] as $menu) : ?>
         <div class="detail-menu">
-            <div>
+            <div class="img-container">
                 <img src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="placeholder">
-                <span><?php echo $menu['nama']?></span>
-                <p><?php $menu['kategori']?></p>
-                <p><?php $menu['harga']?></p>
             </div>
-            <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">
-                <span>Ubah</span>
-            </a>
-            <a href="" class="tombol-edit">
-                <span>Hapus</span>
-            </a>
+            <span><?php echo $menu['nama']?></span>
+            <span><p><?php echo $menu['kategori']?></p></span>
+            <p><?php echo $menu['harga']?></p>
+            <div class="button">
+                <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">
+                    <span>Ubah</span>
+                </a>
+                <a href="" class="tombol-hapus">
+                    <span>Hapus</span>
+                </a>
+            </div>
         </div>
         <?php endforeach; ?>
 
@@ -106,11 +107,6 @@
         <hr>
         <div class="footer-content">
             <p>Copyright © 2024 KantinTeknik</p>
-            <a href="../berandaadmin.php">
-                <div>
-                    <span>Kembali</span>
-                </div>
-            </a>
         </div>
     </section>
 </body>

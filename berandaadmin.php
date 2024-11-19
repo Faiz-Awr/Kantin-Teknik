@@ -69,11 +69,6 @@
                 </div>
             </a>
         </div>
-        <a href="profilpenjual.php" class="keluar-button">
-            <div>
-                <span>Keluar</span>
-            </div>
-        </a>
     </section>
     <section class="footer">
         <div class="kontak">

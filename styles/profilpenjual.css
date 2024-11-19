@@ -52,9 +52,9 @@ hr {
     display: flex;
     flex-direction: column;
     background-color: #ECCDC2;
-    padding: 1%;
-    margin: 0 20%;
+    margin: 1% 25% 0 25%;
     border-radius: 15px;
+    padding: 20px;
 }
 
 .profil h1 {
@@ -62,8 +62,7 @@ hr {
     font-size: 2.5em;
     font-weight: 700;
     color: #D24511;
-    
-    margin-bottom: 20px;
+    margin: 0 0 5% 0;
 }
 
 .inputan {
@@ -71,24 +70,71 @@ hr {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 10px;
-    margin: 10px 0;
-    padding: 1% 20%;
+    margin: 0 5%;
 }
-
 .kiri {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: 5%;
+}
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.photo img {
+    border: 1px solid #42251A;
+    border-radius: 10px;
+}
+
+.upload-photo button{
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 7px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 210px;
 }
 
 .tombol {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.tombol button {
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 210px;
 }
 
 .tombol a {
-    margin-top: 10px;
+    text-decoration: none;
+    color: #F3E6E1;
+    text-align: center;
+    font-size: 1.20em;
+    font-weight: 600;
+    background-color: #42251A;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 3px 5%;
+    width: 200px;
+}
+.tombol .logout {
+    background-color: #D24511;
 }
 
 .kanan {
@@ -101,7 +147,30 @@ hr {
 .input {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    margin: 1px 0;
+}
+.input input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D14A24;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 1px auto;
+    max-width: -webkit-fill-available;
+    height: 13px;
+}
+
+.input label {
+    font-size: 1.20em;
+    font-weight: 600;
+    color: #42251A;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    color: #42251A;
+    margin-right: 34%;
 }
 
 .judul {

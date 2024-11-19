@@ -48,25 +48,6 @@ hr {
     margin: auto;
 }
 
-.tombol-edit {
-    margin-top: 2px;
-    height: 20px;
-    width: 100%;
-    text-decoration: none;
-}
-
-.tombol-edit div {
-    display: flex;
-    background-color: #42251A;
-    
-    border-radius: 15px;
-}
-.tombol-edit div span {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3E6E1;
-    margin: auto;
-}
 
 .judul {
     margin: 0;
@@ -92,21 +73,14 @@ hr {
     font-size: 1.25em;
     color: #ECCDC2;
     margin-left: 20px;
-    margin-bottom: 5px;
-}
-
-.judul-content button:hover{
-    transform: scale(0.95);
-    background-color: #42251a;
-    transition: 0.4s;
-    color: #d24511;
 }
 
 .edit {
     display: grid;
+    align-items: center;
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-    gap: 10px;
+    gap: 21px 7px;
     margin: 5px 5%;
     height: 100%;
     overflow-y: scroll;
@@ -121,17 +95,10 @@ hr {
 
 .tambah-menu div {
     display: flex;
-    background-color: #42251a;
+    background-color: #D24511;
     height: 100%;
     width: 100%;
     border-radius: 15px;
-}
-
-.tambah-menu div:hover{
-    transform: scale(0.95);
-    background-color: #d24511;
-    transition: 0.4s;
-    color: #d24511;
 }
 
 .tambah-menu div img {
@@ -147,61 +114,93 @@ hr {
     background-color: #ECCDC2;
     padding: 1px;
     border-radius: 15px;
+    overflow: hidden;
 }
-
-.detail-menu div {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    padding-bottom: 0;
-}
-
-.detail-menu div img {
-    width: 100%;
-    max-height: 50%;
-}
-
-.detail-menu div span {
+.detail-menu span {
+    white-space: nowrap;
+    overflow-x: scroll;
     font-size: 1.25em;
     font-weight: 600;
     color: #42251A;
-    margin: 10px 0 0 0;
+    margin: 0 5%;
+    padding: 1% 0;
+}
+
+.detail-menu span::-webkit-scrollbar {
+    display: none;
+}
+  
+.detail-menu span p{
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #42251A;
+    margin: 0 0 5% 0;
     padding: 0;
 }
 
-.detail-menu div p {
-    font-size: 1em;
+.detail-menu p {
+    font-size: 0.8em;
     font-weight: 400;
     color: #42251A;
-    margin: 0 0 5px 0;
+    margin: 0 5%;
+    padding: 0;
+}
+
+.img-container {
+    height: 168px;
+    width: 168px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5% 0 0 0;
+    gap: 10px;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+.button span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
     padding: 0;
 }
 
 .tombol-edit {
-    align-self: center;
     display: flex;
     height: 50px;
-    width: 90%;
+    width: 100%;
     background-color: #42251A;
     text-align: center;
     border-radius: 15px;
     text-decoration: none;
     justify-content: center;
-    margin-bottom: 10px;
-}
-.tombol-edit:hover{
-    transform: scale(0.95);
-    background-color: #42251a;
-    transition: 0.4s;
-    color: #d24511;
 }
 
-.tombol-edit span {
-    margin: auto;
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3E6E1;
-    margin: auto;
+.tombol-hapus {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: #D24511;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    justify-content: center;
 }
 
 .footer {
@@ -241,8 +240,4 @@ hr {
     font-weight: 600;
     color: #F3E6E1;
     margin: auto;
-}
-
-.nama-menu{
-    margin-bottom: 0;
 }
