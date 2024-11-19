@@ -20,8 +20,8 @@ navbar {
     color: #F3E6E1;
     height: 100px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
     position: sticky;
     top: 0;
 }
@@ -74,8 +74,8 @@ navbar {
     width: 100%;
     margin-top: 0;
     background-size: cover;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 5%;
+    margin-right:5%;
     background-color: rgba(255, 255, 255, 0.6);
     background-blend-mode: overlay;
     flex-direction: column;
@@ -109,7 +109,6 @@ span{
     font-weight: 600;
 }
 
-/* #ECCDC2 */
 .main-container2{
     display: flex;
     height: 600px;
@@ -125,7 +124,7 @@ span{
 .tutorial{
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 120px;
     margin-top: 50px;
     height: 100%;
 }
@@ -208,9 +207,9 @@ span{
 .tulisan{
     display: flex;
     flex-direction: column;
-    gap:74px;
+    gap:78px;
     width: 50%;
-    margin-left: 100px;
+    margin-left: 5%;
     background-color: #F3E6E1;
 }
 
@@ -246,7 +245,7 @@ span{
 
 .join-us{
     width: 50%;
-    margin-right: 100px;
+    margin-right: 5%;
 }
 
 .join-us img{
