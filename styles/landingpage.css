@@ -265,6 +265,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 50px 100px; 
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: #42251A; 
     color: #F3E6E1; 
     border-top: 2px solid rgba(255, 255, 255, 0.1); 
