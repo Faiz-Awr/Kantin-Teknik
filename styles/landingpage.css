@@ -143,7 +143,9 @@ span{
 }
 
 .tutorial1 img{
-    width: 405.16px;;
+    width: 100%;
+    max-height: 100%;
+    
 }
 .tutorial2{
     display: flex;
@@ -158,7 +160,8 @@ span{
     box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.2);
 }
 .tutorial2 img{
-    width:405.16px;
+    width: 100%;
+    max-height: 100%;
 }
 .tutorial3{
     display: flex;
@@ -173,7 +176,8 @@ span{
     box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.2);
 }
 .tutorial3 img{
-    width: 405.16px;;
+    width: 100%;
+    max-height: 100%;
 }
 .head{
     text-align: center;
@@ -202,6 +206,8 @@ span{
     height: 600px;
     background-color: #F3E6E1;
     padding-top: 40px;
+    padding-bottom: 40px;
+    justify-content: center;
 }
 
 .tulisan{
@@ -211,6 +217,7 @@ span{
     width: 50%;
     margin-left: 5%;
     background-color: #F3E6E1;
+    justify-content: center;
 }
 
 .kiri{
@@ -247,11 +254,19 @@ span{
 .join-us{
     width: 50%;
     margin-right: 5%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: #F3E6E1;
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 .join-us img{
-    width: 100%;
+    max-width: 100%;
     box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.2);
+    float: right;
+    
 }
 
 .jadi-penjual{
