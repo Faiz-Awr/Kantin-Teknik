@@ -70,7 +70,8 @@ hr {
 
 .judul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin: 0 5%;
 }
 
 .judul h1 {
@@ -78,6 +79,7 @@ hr {
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
+    margin-right: 30%;
 }
 
 .footer {
@@ -100,19 +102,22 @@ hr {
     font-size: 12px;
 }
 
-.footer-content a {
+
+.judul a {
     margin: 10px 0;
     text-decoration: none;
 }
 
-.footer-content a div {
+
+
+.judul a div {
     display: flex;
     background-color: #D24511;
     height: 45px;
     width: 100px;
     border-radius: 15px;
 }
-.footer-content a div span {
+.judul a div span {
     font-size: 1.25em;
     font-weight: 600;
     color: #F3E6E1;
