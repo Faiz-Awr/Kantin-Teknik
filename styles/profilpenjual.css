@@ -52,8 +52,7 @@ hr {
     display: flex;
     flex-direction: column;
     background-color: #ECCDC2;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin: 1% 25% 0 25%;
     border-radius: 15px;
     padding: 20px;
 }
@@ -63,7 +62,7 @@ hr {
     font-size: 2.5em;
     font-weight: 700;
     color: #D24511;
-    margin: 0 0 10px 0;
+    margin: 0 0 5% 0;
 }
 
 .inputan {
@@ -71,18 +70,18 @@ hr {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 10px;
-    margin: 0 10% 0 10%;
+    margin: 0 5%;
 }
 .kiri {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: 5%;
 }
 .photo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 5px;
 }
 .photo img {
     border: 1px solid #42251A;
@@ -95,6 +94,7 @@ hr {
     border: none;
     border-radius: 10px;
     padding: 5px;
+    margin-right: 7px;
     font-size: 1.25em;
     font-weight: 600;
     cursor: pointer;
@@ -130,7 +130,7 @@ hr {
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
-    margin: 5px 2%;
+    margin: 3px 5%;
     width: 200px;
 }
 .tombol .logout {

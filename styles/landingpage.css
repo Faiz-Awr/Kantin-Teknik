@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body{
+    background-color: #F3E6E1;
+    min-height: 100vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+}
+
+.atas {
+    padding-top: 60px;
+}
+
+
+.tengah {
+    background-color: #ECCDC2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D24511;
+    color: #F3E6E1;
+    height: 60px;
+    padding: 5px 5vw;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding-left: 5%;
+    padding-right: 5%;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    margin: auto 0;
+    padding: 0px;
+    height: 90%;
+}
+
+.menu {
+    display: flex;
+    gap: 40px;
+    place-items: center;
+}
+
+.menu a {
+    color: #F3E6E1;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #42251A;
+}
+
+#btn-penjual{
+    display: flex;
+    background-color: aqua;
+    height: 20px;
+    place-items: center;
+    border-radius: 10px;
+    background-color: #42251A;
+    padding: 10px;
+    height: 40px;
+}
+
+#btn-penjual:hover{
+    color: #F3E6E1;
+    transform: scale(0.95);
+    transition: 0.4s;
+}
+
+.tambahan {
+    height: 60px;
+}
+
+.main-container{
+    display: flex;
+    height: 90%;
+    background-color: #F3E6E1;
+}
+
+.selamat-datang{
+    background-image: url('../assets/selamat-datang.png');
+    height: 500px;
+    align-self: center;
+    width: 100%;
+    margin-top: 0;
+    background-size: cover;
+    margin-left: 5%;
+    margin-right:5%;
+    background-color: rgba(255, 255, 255, 0.6);
+    background-blend-mode: overlay;
+    flex-direction: column;
+    box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.isi-1{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+}
+
+.judul{
+    color: #D24511;
+    font-weight: bolder;
+    font-size: 92px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.adj{
+    text-align: center;
+    font-size: 24px;
+    color: #42251A;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+span{
+    font-weight: 600;
+}
+
+.main-container2{
+    display: flex;
+    background-color: #ECCDC2;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.cara-penggunaan p{
+    text-align: center;
+}
+
+.tutorial-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 5%;
+}
+
+.tutorial{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: #F3E6E1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gambar-tutorial {
+    width: 100%;
+    height: 168px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.tutorial img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.head{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #D24511;
+    margin-bottom: 10px;
+}
+
+.cara-penggunaan{
+    text-align: center;
+    font-size: 64px;
+    font-weight: bold;
+    color: #D24511;
+
+}
+
+.desc{
+    margin: 10px 20px;
+    text-align: justify;
+}
+
+.main-container3{
+    display: flex;
+    margin: auto 0;
+    justify-content: center;
+}
+
+.tulisan{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 5%;
+    justify-content: space-between;
+}
+
+.kiri{
+    text-align: justify;
+    margin-right: 60px;
+    font-size: 26px;
+    color: #42251A;
+}
+
+.ajakan{
+    display: flex;
+    width: 100%;
+}
+.btn-penjual{
+    display: flex;
+    background-color: #42251A;
+    max-width: fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    color: #F3E6E1;
+    text-decoration: none;
+}
+
+.tulisan a{
+    text-decoration: none;
+    width: fit-content;
+}
+
+.tulisan a:hover{
+    transform: scale(0.95);
+    transition: 0.4s;
+}
+
+.join-us{
+    width: 50%;
+    margin-right: 5%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.join-us img{
+    width: 100%;
+    float: right; 
+    object-fit: contain;
+}
+
+.jadi-penjual{
+    text-align: left;
+    font-size: 56px;
+    font-weight: bold;
+    color: #D24511;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 180px;
+    padding: 50px 100px; 
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #42251A; 
+    color: #F3E6E1; 
+    border-top: 2px solid rgba(255, 255, 255, 0.1); 
+}
+
+footer .footer-left,
+footer .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+footer .footer-left img {
+    height: 80px; 
+}
+
+footer .footer-left p {
+    margin: 0; 
+    font-size: 14px; 
+}
+
+footer .footer-right a {
+    color: #F3E6E1;
+    text-decoration: none; 
+    font-size: 20px; 
+    
+}
+
+@keyframes fadeSlideIn{
+    0%{
+        opacity: 0;
+        transform: translateY(200px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section > *{
+    animation: fadeSlideIn 0.9s ease-out;
+}

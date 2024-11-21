@@ -16,13 +16,13 @@
 
         if (updateMenu($_POST, $_FILES, $id, $fotoLama)) {
             header('Location: ../menu');
-            exit;
+            exit();
         } else {
             echo
             '<script>alert("Ubah menu gagal")
             document.location.href = "index.php?id='.$id.'";
             </script>';
-            exit;
+            exit();
         }
     }
 ?>
@@ -51,11 +51,11 @@
                 <div class="image-upload">
                     <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
                     <button type="button" class="upload-icon" onclick="document.getElementById('imageInput').click();"></button>
-                    <img id="imagePreview" src="../img/<?php echo $menu['foto']; ?>" alt="Image Preview" style="display: block; max-width: 100px; max-height: 100px;">
+                    <img id="imagePreview" src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="Image Preview" style="display: block; max-width: 100px; max-height: 100px;">
                 </div>
                 <script>
                     document.getElementById('imageInput').addEventListener('change', function(event) {
-                        var reader = new FileReader();
+                        var reader = new FileReader();  
                         reader.onload = function() {
                             var preview = document.getElementById('imagePreview');
                             preview.src = reader.result;

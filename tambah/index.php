@@ -5,6 +5,7 @@
     if(isset($_POST['tambah'])){
         if(addMenu($_POST, $_FILES)){
             header('Location: ../menu');
+            exit();
         } else {
             echo 'Tambah menu gagal';
         }
@@ -61,7 +62,8 @@
                     
                     <label><b>Kategori</b></label>
                     <select name="kategori">
-                        <option value="makanan">Makanan</option>
+                        <option value="makanan">Makanan Ringan</option>
+                        <option value="makanan">Makanan Berat</option>
                         <option value="minuman">Minuman</option>
                     </select>
                     

@@ -8,6 +8,9 @@
     font-family: 'Poppins';
 }
 
+body{
+    background-color: #F3E6E1;
+}
 
 .main-container{
     display: flex;
@@ -15,11 +18,11 @@
     align-items: center;
     background-color: #F3E6E1;
     flex-direction: column;
-    height: 995px;
 }
 
 .logo{
-    margin-top: 50px;
+    margin-top: 20px;
+    width: 70px;
 }
 
 

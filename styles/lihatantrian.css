@@ -48,51 +48,30 @@ hr {
     margin: auto;
 }
 
-.table-container {
+.tombol-edit {
+    margin-top: 2px;
+    height: 20px;
+    width: 100%;
+    text-decoration: none;
+}
+
+.tombol-edit div {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
+    background-color: #42251A;
+    
+    border-radius: 15px;
 }
-
-.table-container table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.table-container thead {
-    background-color: #D24511;
+.tombol-edit div span {
+    font-size: 1.25em;
+    font-weight: 600;
     color: #F3E6E1;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-
-.table-container tbody {
-    display: block;
-    overflow-y: auto;
-    height: calc(100vh - 200px); /* Adjust based on your layout */
-}
-
-.table-container th, .table-container td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.table-container tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
+    margin: auto;
 }
 
 .judul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin: 0 5%;
 }
 
 .judul h1 {
@@ -100,6 +79,7 @@ hr {
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
+    margin-right: 30%;
 }
 
 .footer {
@@ -122,19 +102,22 @@ hr {
     font-size: 12px;
 }
 
-.footer-content a {
+
+.judul a {
     margin: 10px 0;
     text-decoration: none;
 }
 
-.footer-content a div {
+
+
+.judul a div {
     display: flex;
     background-color: #D24511;
     height: 45px;
     width: 100px;
     border-radius: 15px;
 }
-.footer-content a div span {
+.judul a div span {
     font-size: 1.25em;
     font-weight: 600;
     color: #F3E6E1;
