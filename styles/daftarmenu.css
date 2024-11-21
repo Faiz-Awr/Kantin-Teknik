@@ -1,0 +1,566 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3E6E1;
+    font-family: 'poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+hr {
+    margin: 0 0 10px 0 ;
+    border: 1px solid #D24511;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D24511;
+    top: 0;
+    margin-bottom: 20px;
+    height: 60px;
+    padding: 5px 5%;
+}
+
+.navbar a {
+    margin: auto 0;
+    text-decoration: none;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: #F3E6E1;
+}
+
+.navbar-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #F3E6E1;
+    border-radius: 15px;
+    height: 36px;
+    margin: auto 0;
+}
+
+.navbar-search input {
+    border: none;
+    border-radius: 15px;
+    background-color: #F3E6E1;
+    font-size: 1em;
+    font-weight: 400;
+    color: #42251A;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+
+.navbar-search img {
+    height: 20px;
+    margin: auto 5px;
+}
+
+.navbar-keranjang {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #42251A;
+    border-radius: 15px;
+    padding: 0 10px;
+    height: 36px;
+    margin: auto 0;
+}
+
+.navbar-keranjang img {
+    height: 20px;
+    margin: auto 0px;
+    margin-right: 5px;
+}
+
+.navbar-keranjang span {
+    color:#F3E6E1;
+    font-size: 1.25em;
+    margin: auto 5px;
+}
+
+.keranjang {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 0;
+    position:fixed;
+    top: 0;
+    right: 0;
+    background-color: #ECCDC2;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1000;
+    padding: 0;
+    justify-content: space-between;
+    box-shadow: 0 0.5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-keranjang {
+    display: block;
+    font-size: 1em;
+    font-weight: 900;
+    color: #ECCDC2;
+    margin: 5% 5% 0 5%;
+}
+
+.keranjang-judul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.keranjang-judul h2 {
+    font-size: 2.15em;
+    font-weight: 900;
+    color: #42251A;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.close-keranjang {
+    background-color: #42251A;
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: auto 0;
+}
+
+.close-keranjang img {
+    height: 15px;
+}
+
+.header-keranjang h2 {
+    color: #42251A;
+}
+
+.tipe-pemesanan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 0 10px 0;
+}
+
+.tipe-pemesanan div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #42251A;
+    border-radius: 5px;
+    height: 36px;
+    width: 125px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.tipe-pemesanan div input {
+    display: none;
+}
+
+.tipe-pemesanan div label {
+    color: #ECCDC2;
+    font-size: 1.25em;
+    margin: auto;
+    cursor: pointer;
+}
+
+.kepala-pesanan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #42251A;
+}
+
+.kepala-pesanan span {
+    color: #42251A;
+    font-size: 1em;
+}
+
+.kepala1 {
+    width: 150px;
+}
+
+.kepala2 {
+    width: 43.188px;
+}
+
+.kepala3 {
+    width: 85.125px;
+}
+
+.isi-keranjang {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.isi-keranjang::-webkit-scrollbar {
+    display: none;
+  }
+
+.pesanan {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 10px 5%;
+    background-color: #F3E6E1;
+}
+
+.isi-pesanan {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.isimenu1 {
+    display: flex;
+    align-items: center;
+    width: 150px;
+}
+
+.isimenu1 img {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin-right: 5px;
+    object-fit: cover;
+}
+
+.deskripsi-menu-pesanan h3 {
+    margin: 0;
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #42251A;
+}
+
+.deskripsi-menu-pesanan p {
+    margin: 5px 0;
+    color: #42251A;
+    font-size: 0.8em;
+}
+
+.isimenu2 {
+    display: flex;
+    width: 43.188px;
+}
+
+.quantity {
+    background-color: #F3E6E1;
+    border: 1px solid #D24511;
+    color: #D24511;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.isimenu3 {
+    width: 85.125px;
+    text-align: left;
+}
+
+.isimenu3 .price {
+    font-size: 1em;
+    color: #42251A;
+}
+
+.catatan {
+    display: flex;
+    align-items: center;
+}
+
+.catatan input {
+    flex-grow: 1;
+    padding: 5px;
+    background-color: #F3E6E1;
+    border: 1px solid #42251A;
+    border-radius: 5px;
+    height: 36px;
+    font-size: 14px;
+}
+
+.hapus-pesanan {
+    background-color: #42251A;
+    height: 36px;
+    width: 36px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ff5f5f;
+    margin-left: 10px;
+}
+
+.pembayaran {
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+}
+.pembayaran .harga,
+.pembayaran .pajak,
+.pembayaran .total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.pembayaran .harga span:first-child,
+.pembayaran .pajak span:first-child,
+.pembayaran .total span:first-child {
+    color: #42251A;
+    font-weight: 600;
+}
+
+.pembayaran .harga span:last-child,
+.pembayaran .pajak span:last-child,
+.pembayaran .total span:last-child {
+    color: #42251A;
+}
+
+.pembayaran select {
+    width: 100%;
+    height: 36px;
+    padding: 0 10px;
+    font-size: 1.25em;
+    color: #ECCDC2;
+    background-color: #42251A;
+    border: 1px solid #ddc2b0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.pembayaran select option {
+    font-size: 14px;
+    color: #42251A;
+    background-color: #ECCDC2;
+}
+
+.tombol-pembayaran {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #42251A;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 60px;
+}
+
+.tombol-pembayaran div {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+}
+
+.tombol-pembayaran div span {
+    font-size: 1.5em;
+    color: #ECCDC2;
+    font-weight: bold;
+    margin: auto;
+}
+
+.pembayaran a:hover {
+    background-color: #D24511;
+}
+
+.kategori-bar {
+    display: flex;
+    flex-direction: row;
+    height: 36px;
+    margin: 0 5% 20px 5%;
+    background-color: #ECCDC2;
+    border-radius: 5px;
+}
+
+.menu-kategori {
+    display: flex;
+    height: 36px;
+    width: 36px;
+    margin-right: 20px;
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #D24511;
+}
+
+.menu-kategori img {
+    height: 24px;
+    margin: auto;
+}
+
+.label-berat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D24511;
+    color: #ECCDC2;
+    border-radius: 5px;
+    height: 36px;
+    padding: 0 15px;
+}
+
+.kategori-radio {
+    display: flex;
+    flex-direction: row;
+}
+
+.kategori-radio input {
+    display: none;
+}
+
+.kategori-radio div {
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.kategori-radio div label {
+    margin: auto;
+}
+
+.kategori-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5%;
+}
+
+.kategori-menu h2 {
+    font-size: 2.5em;
+    font-weight: 900;
+    color: #D24511;
+    margin: 0;
+}
+
+.menu {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 10px;
+    margin-bottom: 30px;
+    height: 100%;
+    max-width: 100%;
+}
+
+/* Gaya untuk masing-masing menu item */
+.detail-menu {
+    border: 1px solid #42251A;
+    border-radius: 8px;
+    background-color: #ECCDC2;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 260px;
+    width: 168px;
+}
+
+/* Gaya untuk gambar */
+.deskripsi-menu img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid #42251A;
+}
+
+/* Gaya untuk informasi menu */
+.info-menu {
+    padding: 8px;
+    text-align: center;
+}
+
+.nama-menu {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+}
+
+.harga-menu {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* Gaya untuk area aksi (tombol dan input) */
+.aksi-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    gap: 6px;
+}
+
+/* Gaya untuk tombol kurangi, tambah, dan tombol tambah langsung */
+.tombol-aksi-menu button,
+.btn-tambah {
+    background-color: #5c4033;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 6px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+/* Ikon pada tombol */
+.tombol-aksi-menu button img {
+    width: 12px;
+}
+
+/* Tombol tambah langsung */
+.btn-tambah {
+    flex-grow: 1;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+}
+
+/* Efek hover pada tombol */
+.tombol-aksi-menu button:hover,
+.btn-tambah:hover {
+    background-color: #45322a;
+}
+
+/* Input untuk jumlah menu */
+.jumlah-menu {
+    width: 36px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 4px;
+}
+
+.lihat-lengkap {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #42251A;
+    color: #ECCDC2;
+}
