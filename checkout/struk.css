@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3E6E1;
+    font-family: 'poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+hr {
+    margin: 0 0 10px 0 ;
+    border: 1px solid #D24511;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #D24511;
+    top: 0;
+    height: 60px;
+    padding: 5px 5%;
+}
+
+.navbar a {
+    margin: auto 0;
+    text-decoration: none;
+    font-size: 2.5em;
+    font-weight: 900;
+    color: #F3E6E1;
+}
+
+.kepala-pesanan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #42251A;
+}
+
+.kepala-pesanan span {
+    color: #42251A;
+    font-size: 1em;
+}
+
+.kepala1 {
+    width: 50%;
+}
+
+.kepala2 {
+    width: 15%;
+}
+
+.kepala3 {
+    width: 35%;
+}
+
+.isi-keranjang {
+    height: 300px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.isi-keranjang::-webkit-scrollbar {
+    display: none;
+}
+
+.pesanan {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px 5%;
+    background-color: #F3E6E1;
+    width: 90%;
+}
+
+.menu-pesanan {
+    margin-bottom: 20px;
+}
+
+.isi-pesanan {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.isimenu1 {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    overflow: scroll;
+}
+
+.isimenu1::-webkit-scrollbar {
+    display: none;
+  }
+
+.isimenu1 img {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    margin-right: 5px;
+    object-fit: cover;
+}
+
+.deskripsi-menu-pesanan h3 {
+    margin: 0;
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #42251A;
+}
+
+.deskripsi-menu-pesanan p {
+    margin: 5px 0;
+    color: #42251A;
+    font-size: 0.8em;
+}
+
+.isimenu2 {
+    display: flex;
+    width: 15%;
+}
+
+.quantity {
+    background-color: #F3E6E1;
+    border: 1px solid #D24511;
+    color: #D24511;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.isimenu3 {
+    width: 35%;
+    text-align: left;
+}
+
+.isimenu3 .price {
+    font-size: 1em;
+    color: #42251A;
+}
+
+.catatan {
+    display: flex;
+    align-items: center;
+}
+
+.catatan input {
+    flex-grow: 1;
+    padding: 5px;
+    background-color: #F3E6E1;
+    border: 1px solid #42251A;
+    border-radius: 5px;
+    height: 36px;
+    font-size: 14px;
+}
+
+.pembayaran {
+    display: flex;
+    flex-direction: column;
+}
+.pembayaran .harga,
+.pembayaran .pajak,
+.pembayaran .total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.pembayaran .harga span:first-child,
+.pembayaran .pajak span:first-child,
+.pembayaran .total span:first-child {
+    color: #42251A;
+    font-weight: 600;
+}
+
+.pembayaran .harga span:last-child,
+.pembayaran .pajak span:last-child,
+.pembayaran .total span:last-child {
+    color: #42251A;
+}
+
+/* Kontainer utama */
+.container-checkout {
+    display: flex;
+    width: 90%;
+    background-color: #ECCDC2;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto 5%;
+}
+
+/* Bagian kiri (pesanan) */
+.container-kiri {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    flex-grow: 1;
+    padding: 20px;
+    width: 50%;
+}
+
+.container-kiri h2 {
+    color: #D24511; /* Judul berwarna oranye */
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.isi-keranjang {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.isi-keranjang::-webkit-scrollbar {
+    width: 8px;
+}
+
+.isi-keranjang::-webkit-scrollbar-thumb {
+    background-color: #D24511; /* Scroll bar */
+    border-radius: 5px;
+}
+
+/* Harga total */
+.pembayaran-struk {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F3E6E1;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pembayaran-struk h3 {
+    color: #D24511;
+    margin-bottom: 10px;
+    font-size: 1.25em;
+}
+
+.pembayaran-struk p {
+    margin: 5px 0;
+    color: #42251A;
+}
+
+.pembayaran .total span {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #D24511; /* Warna total */
+}
+
+/* Bagian kanan (checkout) */
+.container-kanan {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-left: 40px;
+    flex-grow: 1;
+    background-color: #ECCDC2;
+    border-left: 2px dashed #D24511; /* Garis putus-putus */
+    width: 50%;
+}
+
+.container-kanan h2 {
+    color: #D24511;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.pemesan {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F3E6E1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pemesan div {
+    width: 48%;
+}
+
+/* Input field */
+.pemesan input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #42251A;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1em;
+}
+
+.pembayaran-struk img {
+    width: 40%;
+    object-fit: contain;
+    margin: 5px auto;
+    border-radius: 15px;
+}
+
+.button-pembayaran {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.button-pembayaran div {
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    width: 40%;
+}
+
+/* Tombol konfirmasi */
+.button-pembayaran div a {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: auto;
+    font-weight: 600;
+    color: #F3E6E1;
+    background-color: #42251A;
+    text-decoration: none;
+}
