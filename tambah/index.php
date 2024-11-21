@@ -62,7 +62,8 @@
                     
                     <label><b>Kategori</b></label>
                     <select name="kategori">
-                        <option value="makanan">Makanan</option>
+                        <option value="makanan">Makanan Ringan</option>
+                        <option value="makanan">Makanan Berat</option>
                         <option value="minuman">Minuman</option>
                     </select>
                     
