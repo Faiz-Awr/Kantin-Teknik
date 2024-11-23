@@ -36,7 +36,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Kantin Teknik</title>
+    <title>Masuk - Kantin Teknik</title>
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
@@ -50,21 +50,23 @@
                 <a href="../landingpage.html" class="back">Kembali</a>
                 <img src="../assets/logo-login.png" class="logo">
                     <div class="form">
-                            <p class="head">Login</p>
-                            <p class="email">Email</p>    
-                            <input type="email" placeholder="Email" name="email"> 
-                            <p class="password">Password</p>   
-                            <input type="password" placeholder="Password" name="password">
-                            <div class="captcha-area">
-                                <div class="captcha-image">
-                                    <img src="../assets/captcha-background.jpg" class="gambar-captcha">
-                                    <span class="captcha-text"></span>
-                                </div>
-                                <p class="captcha">Captcha</p>
-                                <input type="text" placeholder="Masukkan captcha..." name="captcha_input" required> 
-                                <input type="hidden" name="captcha_hidden" class="captcha-hidden">
+                        <h1 class="head">Masuk</h1>
+                        <label class="email" for="email">Email</label>    
+                        <input type="email" id="email" placeholder="Email" name="email"> 
+                        <label class="password" for="password">Password</label>   
+                        <input type="password" id="password" placeholder="Password" name="password">
+                        <div class="captcha-area">
+                            <div class="captcha-image">
+                                <img src="../assets/captcha-background.jpg" class="gambar-captcha">
+                                <span class="captcha-text"></span>
                             </div>
-                        <input class="captcha-input" type="submit" value="Login" name="Login" class="btn-login">
+                            <label class="captcha" for="captcha_input">Captcha</label>
+                            <input type="text" id="captcha_input" placeholder="Masukkan captcha..." name="captcha_input" required> 
+                            <input type="hidden" name="captcha_hidden" class="captcha-hidden">
+                        </div>
+                        <div class="tombol">
+                        <input class="captcha-input" type="submit" value="Masuk" name="Login" class="btn-login">
+                        </div>
                     </div>
                     <div class="register">
                         <p>Anda belum terdaftar sebagai penjual?

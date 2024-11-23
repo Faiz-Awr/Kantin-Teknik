@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: 'poppins', sans-serif;
+    font-family: sans-serif;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -19,17 +22,25 @@ hr {
     justify-content: space-between;
     background-color: #D24511;
     top: 0;
-    margin-bottom: 1%;
     height: 60px;
-    padding: 5px 10%;
+    padding: 0 5%;
 }
 
 .navbar img {
     height: 90%;
+    margin: auto 20px auto 0;
+}
+
+.navbar span {
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-weight: 700;
+    font-family: 'Poppins';
+    color: #F3E6E1;
     margin: auto 0;
 }
 
-.navbar a {
+/* .navbar a {
     margin: auto 0;
     text-decoration: none;
 }
@@ -46,23 +57,24 @@ hr {
     font-weight: 600;
     color: #F3E6E1;
     margin: auto;
-}
+} */
 
 .profil {
     display: flex;
     flex-direction: column;
     background-color: #ECCDC2;
-    margin: 1% 25% 0 25%;
+    margin: 0 25%;
+    margin-top: auto;
     border-radius: 15px;
     padding: 20px;
 }
 
 .profil h1 {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 700;
     color: #D24511;
-    margin: 0 0 5% 0;
+    margin: 0 0 20px 0;
 }
 
 .inputan {
@@ -82,57 +94,85 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 30px
 }
-.photo img {
+
+.preview-profile {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.preview-profile img {
+    width: 99%;
     border: 1px solid #42251A;
     border-radius: 10px;
+    margin: 0 auto;
+}
+
+.upload-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .upload-photo button{
     background-color: #42251A;
     color: #F3E6E1;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
-    margin-right: 7px;
     font-size: 1.25em;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    width: 210px;
+    width: 100%;
+    height: 36px;
 }
 
 .tombol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .tombol button {
     background-color: #42251A;
     color: #F3E6E1;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
     font-size: 1.25em;
     font-weight: 600;
     cursor: pointer;
-    width: 210px;
+    width: 100%;
+    height: 36px;
 }
 
 .tombol a {
     text-decoration: none;
     color: #F3E6E1;
     text-align: center;
-    font-size: 1.20em;
-    font-weight: 600;
+    font-size: 1.25em;
+    font-weight: 700;
     background-color: #42251A;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
-    margin: 3px 5%;
-    width: 200px;
+    margin-top: 10px;
+    width: 100%;
+    vertical-align: sub;
 }
+
+.tombol a div {
+    display: flex;
+    height: 36px;
+}
+
+.tombol a div span {
+    margin: auto;
+}
+
 .tombol .logout {
     background-color: #D24511;
 }
@@ -140,37 +180,47 @@ hr {
 .kanan {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
     flex-grow: 1;
-    margin-left: 5%;
 }
 
 .input {
     display: flex;
     flex-direction: column;
-    margin: 1px 0;
 }
 .input input{
     width: 100%;
     padding: 10px;
-    border: 1px solid #D14A24;
-    border-radius: 4px;
-    font-size: 16px;
-    margin: 1px auto;
+    border: 2px solid #42251A;
+    background-color: #F3E6E1;
+    border-radius: 5px;
+    font-size: 1.15em;
     max-width: -webkit-fill-available;
-    height: 13px;
+    height: 10px;
 }
 
 .input label {
-    font-size: 1.20em;
-    font-weight: 600;
+    font-size: 1.25em;
+    font-weight: 700;
     color: #42251A;
+    margin-bottom: 2px;
 }
 
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     color: #42251A;
-    margin-right: 34%;
+    margin-left: 25%;
+    margin-bottom: auto;
+}
+
+.footer p {
+    color: #42251A;
+    font-size: 1.15em;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 10px;
 }
 
 .judul {
@@ -183,4 +233,19 @@ hr {
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
+}
+
+button:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.beranda:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.logout:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }

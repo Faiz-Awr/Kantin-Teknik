@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: 'poppins', sans-serif;
+    font-family: sans-serif;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -14,13 +17,21 @@ body {
     justify-content: space-between;
     background-color: #D24511;
     top: 0;
-    margin-bottom: auto;
     height: 60px;
-    padding: 5px 5vw;
+    padding: 0 5%;
 }
 
 .navbar img {
     height: 90%;
+    margin: auto 20px auto 0;
+}
+
+.nav-judul {
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-weight: 700;
+    font-family: 'Poppins';
+    color: #F3E6E1;
     margin: auto 0;
 }
 
@@ -33,7 +44,7 @@ body {
     display: flex;
     background-color: #42251A;
     height: 45px;
-    width: 100px;
+    padding: 0 20px;
     border-radius: 15px;
 }
 
@@ -54,7 +65,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 20px 0;
+    margin: auto 0 20px 0;
     text-align: center;
 }
 
@@ -155,13 +166,13 @@ body {
 .footer {
     margin: 0px;
     text-align: center;
-    margin-top: auto;
+    margin: auto 0 5px 0;
     width: 100%;
 }
 
 .footer p {
     text-align: center;
-    margin: 10px;
+    margin: 3px;
     font-size: 12px;
 }
 

@@ -56,21 +56,24 @@
 <body>
     <header class="navbar">
         <img src="../assets/logo.png" alt="">
-        <a href="../logout.php">
-            <div>
-                <span>Log Out</span>
-            </div>
+        <span class="nav-judul">Kantin Teknik</span>
+        <a href="berandaadmin.php">
+            <a href="logout.php">
+                <div>
+                    <span>Keluar Akun</span>
+                </div>
+            </a>
         </a>
     </header>
     <section class="judul">
         <div class="judul-content">
             <h1>Edit Menu</h1>
             <form action="index.php" method="post">
-                <button type="submit" name="cancel_changes"><div>
-                    <span>Batalkan Perubahan</span>
+                <button type="submit" name="cancel_changes" class="batal" ><div>
+                    <span>Batal</span>
                 </div></button>
-                <button type="submit" name="save_changes"><div>
-                    <span>Simpan Perubahan</span>
+                <button type="submit" name="save_changes" class="simpan" ><div>
+                    <span>Simpan</span>
                 </div></button>    
             </form>
         </div>
@@ -89,7 +92,7 @@
                 <img src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="placeholder">
             </div>
             <span><?php echo $menu['nama']?></span>
-            <span><p><?php echo $menu['kategori']?></p></span>
+            <p><?php echo $menu['kategori']?></p>
             <p><?php echo $menu['harga']?></p>
             <div class="button">
                 <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">

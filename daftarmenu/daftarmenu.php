@@ -132,7 +132,7 @@
                 <option value="tunai">Tunai</option>
                 <option value="cashless">Cashless</option>
             </select>
-            <a href="" class="tombol-pembayaran">
+            <a href="../checkout/struk-tunai.html" class="tombol-pembayaran">
                 <div>
                     <span>
                         Lanjutkan Pembayaran
@@ -143,19 +143,16 @@
     </div>
 
     <section class="kategori-bar">
-        <div class="menu-kategori">
-            <img src="../assets/menu-01.png" alt="">
-        </div>
         <form id="kategori" method="POST" action="" class="kategori-radio">
             <div class="label-berat">
                 <input type="radio" id="berat" name="tag" value="berat">
                 <label for="berat">Makanan Berat</label>
             </div>
-            <div>
+            <div class="label-ringan">
                 <input type="radio" id="ringan" name="tag" value="ringan">
                 <label for="ringan">Makanan Ringan</label>
             </div>
-            <div>
+            <div class="label-minum">
                 <input type="radio" id="minuman" name="tag" value="minuman">
                 <label for="minuman">Minuman</label>
             </div>
@@ -163,7 +160,7 @@
     </section>
     <section class="daftar-menu">
         <div class="kategori-menu">
-            <h2>Makanan Berat</h2>
+            <h2 id = "makanan-berat" >Makanan Berat</h2>
             <hr>
             <div class="menu">
                 <?php foreach ($makanan_berat as $menu) : ?>
@@ -191,7 +188,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <h2>Makanan Ringan</h2>
+            <h2 id="makanan-ringan">Makanan Ringan</h2>
             <hr>
             <div class="menu">
                 <?php foreach ($makanan_ringan as $menu) : ?>
@@ -219,7 +216,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>  
-            <h2>Minuman</h2>
+            <h2 id="minuman1">Minuman</h2>
             <hr>
             <div class="menu">
                 <?php foreach ($minuman as $menu) : ?>
