@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -26,6 +35,14 @@ hr {
 
 .navbar img {
     height: 90%;
+    margin: auto 20px auto 0;
+}
+
+.nav-judul {
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #F3E6E1;
     margin: auto 0;
 }
 
@@ -38,8 +55,15 @@ hr {
     display: flex;
     background-color: #42251A;
     height: 45px;
-    width: 100px;
+    padding: 0 20px;
     border-radius: 15px;
+}
+
+.navbar a div:hover{
+    transform: scale(0.95);
+    background-color: #42251a;
+    transition: 0.4s;
+    color: #d24511;
 }
 .navbar a div span {
     font-size: 1.25em;
@@ -70,7 +94,8 @@ hr {
 
 .judul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin: 0 5%;
 }
 
 .judul h1 {
@@ -78,6 +103,7 @@ hr {
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
+    margin-right: 30%;
 }
 
 .footer {
@@ -100,19 +126,22 @@ hr {
     font-size: 12px;
 }
 
-.footer-content a {
+
+.judul a {
     margin: 10px 0;
     text-decoration: none;
 }
 
-.footer-content a div {
+
+
+.judul a div {
     display: flex;
     background-color: #D24511;
     height: 45px;
     width: 100px;
     border-radius: 15px;
 }
-.footer-content a div span {
+.judul a div span {
     font-size: 1.25em;
     font-weight: 600;
     color: #F3E6E1;

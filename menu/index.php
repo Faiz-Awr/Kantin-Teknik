@@ -45,7 +45,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,21 +56,24 @@
 <body>
     <header class="navbar">
         <img src="../assets/logo.png" alt="">
-        <a href="../logout.php">
-            <div>
-                <span>Log Out</span>
-            </div>
+        <span class="nav-judul">Kantin Teknik</span>
+        <a href="berandaadmin.php">
+            <a href="logout.php">
+                <div>
+                    <span>Keluar Akun</span>
+                </div>
+            </a>
         </a>
     </header>
     <section class="judul">
         <div class="judul-content">
             <h1>Edit Menu</h1>
             <form action="index.php" method="post">
-                <button type="submit" name="cancel_changes"><div>
-                    <span>Batalkan Perubahan</span>
+                <button type="submit" name="cancel_changes" class="batal" ><div>
+                    <span>Batal</span>
                 </div></button>
-                <button type="submit" name="save_changes"><div>
-                    <span>Simpan Perubahan</span>
+                <button type="submit" name="save_changes" class="simpan" ><div>
+                    <span>Simpan</span>
                 </div></button>    
             </form>
         </div>
@@ -86,18 +88,20 @@
 
         <?php foreach($_SESSION['temp_menu_data'] as $menu) : ?>
         <div class="detail-menu">
-            <div>
+            <div class="img-container">
                 <img src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="placeholder">
-                <span><?php echo $menu['nama']?></span>
-                <p><?php $menu['kategori']?></p>
-                <p><?php $menu['harga']?></p>
             </div>
-            <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">
-                <span>Ubah</span>
-            </a>
-            <a href="" class="tombol-edit">
-                <span>Hapus</span>
-            </a>
+            <span><?php echo $menu['nama']?></span>
+            <p><?php echo $menu['kategori']?></p>
+            <p><?php echo $menu['harga']?></p>
+            <div class="button">
+                <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">
+                    <span>Ubah</span>
+                </a>
+                <a href="" class="tombol-hapus">
+                    <span>Hapus</span>
+                </a>
+            </div>
         </div>
         <?php endforeach; ?>
 
@@ -106,11 +110,6 @@
         <hr>
         <div class="footer-content">
             <p>Copyright © 2024 KantinTeknik</p>
-            <a href="../berandaadmin.php">
-                <div>
-                    <span>Kembali</span>
-                </div>
-            </a>
         </div>
     </section>
 </body>

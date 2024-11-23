@@ -41,34 +41,36 @@
     <link rel="stylesheet" href="../styles/register.css">
 </head>
 <body>
-    <form action="index.php" method="POST">
-    <div class="main-container">
-        <img src="../assets/logo-login.png" width="100px" class="logo">
-        <div class="register-form">
-                <p class="header">Form Registrasi</p>
-                <p class="nama-lengkap">Nama Lengkap</p>
-                <input type="text" placeholder="Nama Lengkap" name="nama_lengkap">
-            <p class="nama-kantin">Nama Kantin</p>
-            <input type="text" placeholder="Nama Kantin" name="nama_kantin">
-            <div class="register-form-main">
-                <div class="register-form2">
-                    <p class="nomor-telepon">Nomor Telepon</p>
-                    <input type="tel" placeholder="Nomor Telepon" pattern="[0-9]{10,15}" name="nomor_telepon">
-                    <p class="password">Password</p>
-                    <input type="password" placeholder=" Password" name="password">
+    <form action="index.php" method="POST" class="form-regis">
+        <div class="main-container">
+            <img src="../assets/logo-login.png" class="logo">
+            <div class="register-form">
+                    <h1 class="header">Form Registrasi</h1>
+                    <label for="nama_lengkap" class="nama-lengkap">Nama Lengkap</label>
+                    <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" id="nama_lengkap">
+                <label for="nama_kantin" class="nama-kantin">Nama Kantin</label>
+                <input type="text" placeholder="Nama Kantin" name="nama_kantin" id="nama_kantin">
+                <div class="register-form-main">
+                    <div class="register-form2">
+                        <label for="nomor_telepon" class="nomor-telepon">Nomor Telepon</label>
+                        <input type="tel" placeholder="Nomor Telepon" pattern="[0-9]{10,15}" name="nomor_telepon" id="nomor_telepon">
+                        <label for="password" class="password">Password</label>
+                        <input type="password" placeholder="Password" name="password" id="password">
+                    </div>
+                    <div class="register-form1">
+                        <label for="email" class="email">E-mail</label>
+                        <input type="email" placeholder="E-mail" name="email" id="email">
+                        <label for="konfirmasi_password" class="password">Konfirmasi Password</label>
+                        <input type="password" placeholder="Konfirmasi Password" name="konfirmasi_password" id="konfirmasi_password">
+                    </div>
                 </div>
-                <div class="register-form1">
-                    <p class="email">E-mail</p>
-                    <input type="email" placeholder="E-mail" class="email" name="email">
-                    <p class="password">Konfirmasi Password</p>
-                    <input type="password" placeholder="Konfirmasi Password" name="konfirmasi_password">
+                <div class="tombol">
+                    <input type="submit" value="Daftar" name="register" class="btn-register">
                 </div>
             </div>
-            <input type="submit" value="Register" name="register" class="btn-register">
+            <p class="login">Anda sudah terdaftar sebagai penjual?  <a href="../login" style="text-decoration: none; color: black; font-weight: bolder;">Masuk</a></p>
+            <p class="copyright">Copyright © 2024 KantinTeknik</p>
         </div>
-        <p class="login">Anda sudah terdaftar sebagai penjual?  <a href="../login" style="text-decoration: none; color: black; font-weight: bolder;">Login</a></p>
-        <p class="copyright">Copyright © 2024 KantinTeknik</p>
-    </div>
     </form>
 </body>
 </html>

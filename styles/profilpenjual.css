@@ -19,17 +19,24 @@ hr {
     justify-content: space-between;
     background-color: #D24511;
     top: 0;
-    margin-bottom: 1%;
     height: 60px;
-    padding: 5px 10%;
+    padding: 5px 5%;
 }
 
 .navbar img {
     height: 90%;
+    margin: auto 20px auto 0;
+}
+
+.navbar span {
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #F3E6E1;
     margin: auto 0;
 }
 
-.navbar a {
+/* .navbar a {
     margin: auto 0;
     text-decoration: none;
 }
@@ -46,24 +53,24 @@ hr {
     font-weight: 600;
     color: #F3E6E1;
     margin: auto;
-}
+} */
 
 .profil {
     display: flex;
     flex-direction: column;
     background-color: #ECCDC2;
-    padding: 1%;
-    margin: 0 20%;
+    margin: 0 25%;
+    margin-top: auto;
     border-radius: 15px;
+    padding: 20px;
 }
 
 .profil h1 {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 700;
     color: #D24511;
-    
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
 .inputan {
@@ -71,37 +78,145 @@ hr {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 10px;
-    margin: 10px 0;
-    padding: 1% 20%;
+    margin: 0 5%;
 }
-
 .kiri {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: 5%;
+}
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px
+}
+
+.preview-profile {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.preview-profile img {
+    width: 99%;
+    border: 1px solid #42251A;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.upload-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.upload-photo button{
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    height: 36px;
 }
 
 .tombol {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tombol button {
+    background-color: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    height: 36px;
 }
 
 .tombol a {
+    text-decoration: none;
+    color: #F3E6E1;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: 700;
+    background-color: #42251A;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
+    width: 100%;
+    vertical-align: sub;
+}
+
+.tombol a div {
+    display: flex;
+    height: 36px;
+}
+
+.tombol a div span {
+    margin: auto;
+}
+
+.tombol .logout {
+    background-color: #D24511;
 }
 
 .kanan {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
     flex-grow: 1;
-    margin-left: 5%;
 }
 
 .input {
     display: flex;
     flex-direction: column;
+}
+.input input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #42251A;
+    background-color: #F3E6E1;
+    border-radius: 5px;
+    font-size: 1.15em;
+    max-width: -webkit-fill-available;
+    height: 10px;
+}
+
+.input label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #42251A;
+    margin-bottom: 2px;
+}
+
+.footer {
+    display: flex;
+    justify-content: start;
+    color: #42251A;
+    margin-left: 25%;
+    margin-bottom: auto;
+}
+
+.footer p {
+    color: #42251A;
+    font-size: 1.15em;
+    font-weight: 400;
     margin: 0;
+    margin-top: 10px;
 }
 
 .judul {

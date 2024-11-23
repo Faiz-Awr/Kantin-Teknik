@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -19,13 +28,22 @@ hr {
     justify-content: space-between;
     background-color: #D24511;
     top: 0;
-    margin-bottom: 20px;
     height: 60px;
     padding: 5px 5%;
+    margin-bottom: 10px;
 }
+
 
 .navbar img {
     height: 90%;
+    margin: auto 20px auto 0;
+}
+
+.nav-judul {
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #F3E6E1;
     margin: auto 0;
 }
 
@@ -38,8 +56,15 @@ hr {
     display: flex;
     background-color: #42251A;
     height: 45px;
-    width: 100px;
+    padding: 0 20px;
     border-radius: 15px;
+}
+
+.navbar a div:hover{
+    transform: scale(0.95);
+    background-color: #42251a;
+    transition: 0.4s;
+    color: #d24511;
 }
 .navbar a div span {
     font-size: 1.25em;
@@ -48,25 +73,6 @@ hr {
     margin: auto;
 }
 
-.tombol-edit {
-    margin-top: 2px;
-    height: 20px;
-    width: 100%;
-    text-decoration: none;
-}
-
-.tombol-edit div {
-    display: flex;
-    background-color: #42251A;
-    
-    border-radius: 15px;
-}
-.tombol-edit div span {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3E6E1;
-    margin: auto;
-}
 
 .judul {
     margin: 0;
@@ -86,52 +92,67 @@ hr {
     flex-grow: 1;
 }
 
-.judul-content button {
-    background-color: #42251A;
-    border-radius: 15px;
-    font-size: 1.25em;
-    color: #ECCDC2;
-    margin-left: 20px;
-    margin-bottom: 5px;
+.judul-content form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
 }
 
-.judul-content button:hover{
-    transform: scale(0.95);
-    background-color: #42251a;
-    transition: 0.4s;
-    color: #d24511;
+.judul-content button {
+    border: none;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 1.25em;
+    color: #F3E6E1;
+    margin: auto 0;
+    margin-left: 20px;
+    padding: 0 20px;
+}
+
+.batal {
+    background-color: #d24511;
+}
+
+.simpan {
+    background-color: #42251A;
 }
 
 .edit {
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
-    gap: 10px;
-    margin: 5px 5%;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 169px);
+    grid-template-rows: repeat(auto-fill, 320px);
+    gap: 15px;
+    margin: 0 5%;
     height: 100%;
     overflow-y: scroll;
+    padding: 10px 0;
     max-width: 90%;
+}
+
+.edit::-webkit-scrollbar {
+    display: none;
 }
 
 .tambah-menu {
     height: 318px;
     width: 168px;
     text-decoration: none;
+    
 }
 
 .tambah-menu div {
     display: flex;
-    background-color: #42251a;
+    background-color: #D24511;
     height: 100%;
     width: 100%;
-    border-radius: 15px;
-}
-
-.tambah-menu div:hover{
-    transform: scale(0.95);
-    background-color: #d24511;
-    transition: 0.4s;
-    color: #d24511;
+    border: 1px solid #ECCDC2;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .tambah-menu div img {
@@ -144,64 +165,88 @@ hr {
     justify-content: space-between;
     height: 318px;
     width: 168px;
+    border: 1px solid #42251A;
+    border-radius: 8px;
     background-color: #ECCDC2;
-    padding: 1px;
-    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.detail-menu div {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    padding-bottom: 0;
-}
-
-.detail-menu div img {
-    width: 100%;
-    max-height: 50%;
-}
-
-.detail-menu div span {
+.detail-menu span {
+    white-space: nowrap;
+    overflow-x: scroll;
     font-size: 1.25em;
     font-weight: 600;
     color: #42251A;
-    margin: 10px 0 0 0;
+    margin: 3px 5%;
+}
+
+.detail-menu span::-webkit-scrollbar {
+    display: none;
+}
+
+.detail-menu p {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #42251A;
+    margin: 2px 5%;
     padding: 0;
 }
 
-.detail-menu div p {
-    font-size: 1em;
-    font-weight: 400;
-    color: #42251A;
-    margin: 0 0 5px 0;
+.img-container {
+    height: 135px;
+    width: 100%;
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #42251A;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5% 5%;
+    gap: 10px;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+.button span {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #F3E6E1;
+    margin: auto;
     padding: 0;
 }
 
 .tombol-edit {
-    align-self: center;
     display: flex;
     height: 50px;
-    width: 90%;
+    width: 100%;
     background-color: #42251A;
     text-align: center;
     border-radius: 15px;
     text-decoration: none;
     justify-content: center;
-    margin-bottom: 10px;
-}
-.tombol-edit:hover{
-    transform: scale(0.95);
-    background-color: #42251a;
-    transition: 0.4s;
-    color: #d24511;
 }
 
-.tombol-edit span {
-    margin: auto;
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3E6E1;
-    margin: auto;
+.tombol-hapus {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: #D24511;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    justify-content: center;
 }
 
 .footer {
@@ -241,8 +286,4 @@ hr {
     font-weight: 600;
     color: #F3E6E1;
     margin: auto;
-}
-
-.nama-menu{
-    margin-bottom: 0;
 }

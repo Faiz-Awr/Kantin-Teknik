@@ -9,8 +9,14 @@
 <body>
     <?php include('navbar.php')?>
     <section class="judul">
-        <h1>Antrain Pesanan</h1>
+        <h1>Antrian Pesanan</h1>
+        <a href="berandaadmin.php">
+            <div class = "kembali" >
+                <span>Kembali</span>
+            </div>
+        </a>
     </section>
+    <hr>
     <section class="antrian">
         <!-- antrian pesanan -->
     </section>
@@ -18,11 +24,6 @@
         <hr>
         <div class="footer-content">
             <p>Copyright © 2024 KantinTeknik</p>
-            <a href="berandaadmin.php">
-                <div>
-                    <span>Kembali</span>
-                </div>
-            </a>
         </div>
     </section>
 </body>

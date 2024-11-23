@@ -178,10 +178,26 @@ body {
 }
 
 .footer {
-  text-align: center;
+  text-align: CENTER;
   padding: 20px;
   background-color: #FFEFE8;
   color: #4E342E;
   font-size: 14px;
   font-weight: bold;
+}
+/* QR Code Styling */
+.payment-section img {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #E85D04;
+  border-radius: 10px;
+  max-width: 200px;
+  height: auto;
+}
+
+/* Button hover effect for QR Code confirmation */
+.payment-section button:hover {
+  background-color: #8B5C36;
+  transform: scale(1.05); /* Sedikit memperbesar tombol saat di-hover */
+  transition: all 0.2s ease-in-out;
 }
