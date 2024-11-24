@@ -174,6 +174,16 @@
         return false; // Return false if the menu item with that id is not found
     }
 
+    function deleteMenu($id) {
+        foreach ($_SESSION['temp_menu_data'] as $key => $menu) {
+            if ($menu['id'] == $id) {
+                unset($_SESSION['temp_menu_data'][$key]);
+                return true;
+            }
+        }
+        return false; // Return false if the menu item with that id is not found
+    }
+
     function sendPayload($data) {
         $conn = connection();
 
