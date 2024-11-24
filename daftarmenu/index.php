@@ -33,7 +33,7 @@
 </head>
 <body>
     <header class="navbar">
-        <a href="../d.php">Kantin Teknik</a>
+        <a href="../landingpage.html">Kantin Teknik</a>
         <div class="navbar-search">
             <img src="../assets/search.png" alt="">
             <input type="search" name="search" placeholder="Search Bar" id="">

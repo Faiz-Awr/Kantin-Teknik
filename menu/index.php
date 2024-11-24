@@ -12,7 +12,6 @@
             $menu['foto_lama'] = $menu['foto'] ?? ''; // Assign current 'foto' or an empty string as default
         }
     }
-    print_r($_SESSION['temp_menu_data']);
     unset($menu); // break reference with the last element
 
     if(isset($_POST['delete'])){

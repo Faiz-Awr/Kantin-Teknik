@@ -358,4 +358,33 @@
             return false;
         }
     }
+
+    function getAntrian(){
+        $conn = connection();
+        $query = "  SELECT p.id as 'id_pesanan', p.nama_pemesan, p.no_tlp_pemesan, p.jumlah, p.total_harga, m.nama,
+                    CASE
+                        WHEN P.STATUS_PESANAN = 0 THEN 'PESANAN BELUM SELESAI' ELSE 'PESANAN SUDAH SELESAI'
+                    END AS 'status'
+                    FROM PESANAN P
+                    JOIN MENU M
+                    ON M.ID = P.ID_MENU
+                    WHERE P.ID_PENJUAL = ".$_SESSION['id']." AND P.STATUS_PESANAN = 0
+                 ";
+        $result = mysqli_query($conn, $query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    function selesaiAntrian($id){
+        $conn = connection();
+        $query = "UPDATE pesanan SET status_pesanan = 1 WHERE id = $id";
+        if(mysqli_query($conn, $query)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 ?>
