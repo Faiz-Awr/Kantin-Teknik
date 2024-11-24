@@ -1,3 +1,4 @@
 <?php
-    header('Location: login');
+    header('Location: landingpage.html');
+    exit();
 ?>

@@ -88,8 +88,8 @@
                         <div>
                             <label>Kategori</label>
                             <select name="kategori">
-                                <option value="makanan" <?php echo $menu['kategori'] == 'makanan' ? 'selected' : '';?>>Makanan</option>
-                                <option value="makanan" <?php echo $menu['kategori'] == 'makanan' ? 'selected' : '';?>>Makanan</option>
+                                <option value="makanan-berat" <?php echo $menu['kategori'] == 'makanan-berat' ? 'selected' : '';?>>Makanan Berat</option>
+                                <option value="makanan-ringan" <?php echo $menu['kategori'] == 'makanan-ringan' ? 'selected' : '';?>>Makanan Ringan</option>
                                 <option value="minuman" <?php echo $menu['kategori'] == 'minuman' ? 'selected' : '';?>>Minuman</option>
                             </select>
                         </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="tombol-form">
                     <button type="button" class="back-button">Kembali</button>
-                    <button type="submit" class="add-button" name="ubah">Tambah</button>
+                    <button type="submit" class="add-button" name="ubah">Ubah</button>
                 </div>
             </form>
         </div>

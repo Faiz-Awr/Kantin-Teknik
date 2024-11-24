@@ -12,7 +12,19 @@
             $menu['foto_lama'] = $menu['foto'] ?? ''; // Assign current 'foto' or an empty string as default
         }
     }
+    print_r($_SESSION['temp_menu_data']);
     unset($menu); // break reference with the last element
+
+    if(isset($_POST['delete'])){
+        $id = $_POST['id'];
+        $foto = $_POST['foto'];
+        if(deleteMenu($id, $foto)){
+            header('Location: index.php');
+            exit();
+        } else {
+            echo 'Hapus menu gagal';
+        }
+    }
 
     if(isset($_POST['save_changes'])){
         if (sendPayload($_SESSION['temp_menu_data'])) {
@@ -58,7 +70,7 @@
         <img src="../assets/logo.png" alt="">
         <span class="nav-judul">Kantin Teknik</span>
         <a href="berandaadmin.php">
-            <a href="logout.php">
+            <a href="../logout.php">
                 <div>
                     <span>Keluar Akun</span>
                 </div>
@@ -92,15 +104,20 @@
                 <img src="<?php echo file_exists("../img/".$menu['foto']) ? '../img/'.$menu['foto'] : '../img_temp/'.$menu['foto']?>" alt="placeholder">
             </div>
             <span><?php echo $menu['nama']?></span>
-            <p><?php echo $menu['kategori']?></p>
+            <p><?php echo $menu['kategori'] == 'makanan-berat' ? 'Makanan Berat' : 
+                                                                                    ($menu['kategori'] == 'makanan-ringan' ? 'Makanan Ringan' : 
+                                                                                                                                                ($menu['kategori'] == 'minuman' ? 'Minuman' : 'Makanan Berat'))?></p>
             <p><?php echo $menu['harga']?></p>
             <div class="button">
                 <a href="../ubah/index.php?id=<?php echo $menu['id']?>" class="tombol-edit">
                     <span>Ubah</span>
                 </a>
-                <a href="" class="tombol-hapus">
-                    <span>Hapus</span>
-                </a>
+                <form action="index.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $menu['id']?>">
+                    <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
+                        <button type="submit" name="delete" class="tombol-hapus">
+                            <span>Hapus</span>
+                </form>
             </div>
         </div>
         <?php endforeach; ?>
