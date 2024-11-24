@@ -7,7 +7,7 @@
         exit();
     }
 
-    if (isset($_POST['simpan'])) {
+    if (isset($_POST['simpan']) ) {
         // Assign default values if inputs are empty
         $nama = !empty($_POST['nama']) ? $_POST['nama'] : $_SESSION['nama_lengkap'];
         $kantin = !empty($_POST['kantin']) ? $_POST['kantin'] : $_SESSION['nama_kantin'];
@@ -57,26 +57,51 @@
     }
 
     if (isset($_POST['gantiFoto'])) {
-        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-            $tmp_name = $_FILES['foto']['tmp_name'];
-            $foto_name = uniqid() . '_' . basename($_FILES['foto']['name']);
+        // Check if a file was uploaded without errors
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['image']['tmp_name'];
+            $original_name = basename($_FILES['image']['name']);
+            $extension = pathinfo($original_name, PATHINFO_EXTENSION);
+            $allowed_extensions = ['jpg', 'jpeg', 'png', 'webp'];
+    
+            // Validate file extension
+            if (!in_array(strtolower($extension), $allowed_extensions)) {
+                echo '<script>alert("Hanya file dengan format JPG, JPEG, PNG, atau GIF yang diperbolehkan.");</script>';
+                exit();
+            }
+    
+            // Generate a unique name for the file
+            $foto_name = uniqid('profile_') . '.' . $extension;
             $foto_path = 'img/' . $foto_name;
-
+    
+            // Move the uploaded file to the target directory
             if (move_uploaded_file($tmp_name, $foto_path)) {
+                // Update the database
                 $id = $_SESSION['id'];
                 $conn = connection();
                 $query = "UPDATE penjual SET foto_profile = '$foto_name' WHERE id = '$id'";
+                
                 if (mysqli_query($conn, $query)) {
+                    // Update the session with the new photo name
+                    unlink('img/' . $_SESSION['foto']); // Remove the old photo
                     $_SESSION['foto'] = $foto_name;
+    
+                    // Notify the user and reload the profile page
                     echo '<script>alert("Foto berhasil diunggah!"); window.location.href = "profilpenjual.php";</script>';
+                    exit();
                 } else {
+                    // Remove the uploaded file if the database update fails
+                    unlink($foto_path);
                     echo '<script>alert("Gagal mengupdate foto di database.");</script>';
                 }
             } else {
-                echo '<script>alert("Gagal mengunggah foto.");</script>';
+                echo '<script>alert("Gagal mengunggah foto. Pastikan folder `img` memiliki izin yang benar.");</script>';
             }
+        } else {
+            echo '<script>alert("Tidak ada file yang diunggah atau terjadi kesalahan.");</script>';
         }
     }
+
 ?>
 
 
@@ -100,13 +125,38 @@
                 <div class="photo">
                     <form action="profilpenjual.php" method="post" enctype="multipart/form-data">
                         <div class="preview-profile">
-                            <img id="preview" src="assets/person-brown.png" alt="Preview">
+                            <!-- Hidden file input -->
+                            <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
+                            <!-- Preview image that acts as the upload button -->
+                            <button type="button" class="upload-icon" onclick="document.getElementById('imageInput').click();" style="border: none; background: none;">
+                                <img id="imagePreview" src="<?php echo isset($_SESSION['foto']) ? 'img/' . $_SESSION['foto'] : 'assets/person-brown.png'?>" alt="Preview" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+                            </button>
                         </div>
                         <div class="upload-photo">
                             <button type="submit" name="gantiFoto">Ganti Photo Profile</button>
-                        </div>  
+                        </div>
                     </form>
                 </div>
+
+                <script>
+                    // Handle file input change
+                    document.getElementById('imageInput').addEventListener('change', function(event) {
+                        var file = event.target.files[0]; // Get the selected file
+                        if (file) {
+                            var reader = new FileReader(); // Create FileReader to read the file
+                            reader.onload = function(e) {
+                                var preview = document.getElementById('imagePreview'); // Get the preview element
+                                preview.src = e.target.result; // Set the src to the file's data URL
+                            };
+                            reader.readAsDataURL(file); // Read the file as a data URL
+                        }
+                    });
+
+                    // Allow clicking on the preview image to trigger file input
+                    document.getElementById('imagePreview').addEventListener('click', function() {
+                        document.getElementById('imageInput').click();
+                    });
+                </script>
 
                 <form action="profilpenjual.php" method="post">
                     <div class="tombol">
@@ -125,8 +175,8 @@
                         <input type="text" id="kantin" name="kantin" value="<?php echo $_SESSION['nama_kantin']?>" placeholder="<?php echo $_SESSION['nama_kantin']?>">
                     </div>
                     <div class="input">
-                        <label for="telepon">Nomor Telepon</label> 
-                        <input type="text" id="telepon" name="telepon" value="<?php echo $_SESSION['nomor_telepon']?>" placeholder="<?php echo $_SESSION['nomor_telepon']?>">
+                        <label for="telepon">Nomor Telepon</label>
+                        <input type="tel" id="telepon" name="telepon" value="<?php echo $_SESSION['nomor_telepon']?>" placeholder="<?php echo $_SESSION['nomor_telepon']?>" pattern="[0-9]{10,13}" title="Hanya angka yang diperbolehkan (10-13 digit)">
                     </div>
                     <div class="input">
                         <label for="email">Email</label>
