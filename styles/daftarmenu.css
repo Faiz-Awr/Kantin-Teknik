@@ -179,6 +179,11 @@ hr {
     display: none;
 }
 
+.tipe-pemesanan div:hover{
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
 .tipe-pemesanan div label {
     color: #ECCDC2;
     font-size: 1em;
@@ -313,6 +318,17 @@ hr {
     color: #ff5f5f;
     margin-left: 10px;
 }
+.hapus-pesanan:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.close-keranjang:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    background-color: #D24511;
+    color: #ECCDC2;
+}
 
 .pembayaran {
     display: flex;
@@ -382,6 +398,11 @@ hr {
     color: #ECCDC2;
     font-weight: bold;
     margin: auto;
+}
+.tombol-pembayaran:hover {
+    background-color: #D24511;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }
 
 .pembayaran a:hover {
@@ -547,18 +568,17 @@ a{
 /* Gaya untuk tombol kurangi, tambah, dan tombol tambah langsung */
 .tombol-aksi-menu button,
 .btn-tambah {
-    background-color: #5c4033;
-    color: white;
+    background-color: #42251A;
+    color: #ECCDC2;
     border: none;
     border-radius: 4px;
     font-size: 12px;
     padding: 6px;
-    height: 24px;
+    height: 36px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
 }
 
 /* Ikon pada tombol */
@@ -577,7 +597,8 @@ a{
 /* Efek hover pada tombol */
 .tombol-aksi-menu button:hover,
 .btn-tambah:hover {
-    background-color: #45322a;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }
 
 /* Input untuk jumlah menu */

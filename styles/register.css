@@ -35,7 +35,7 @@ body{
 
 
 .register-form{
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     width: 70%;
     justify-content: center;
@@ -51,6 +51,7 @@ body{
     font-size: 1.5em;
     color: #42251A;
     font-weight: 700;
+    margin-top: 10px;
 }
 
 .register-form input {
@@ -61,7 +62,7 @@ body{
 .header{
     text-align: center;
     font-size: 3em;
-    margin: 20px 0 0 0;
+    margin: 0;
     font-weight: 700;
     color: #D24511;
 }
@@ -79,14 +80,14 @@ body{
     gap: 15px;
 }
 .register-form1{
-    margin-top: 20px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
 .register-form2{
-    margin-top: 20px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -106,7 +107,10 @@ body{
 
 .tombol input{
     height: 40px;
+    vertical-align: middle;
+    padding: 0;
     border: 2px solid #D24511;
+    margin: auto;
 }
 
 .btn-register{
@@ -122,9 +126,7 @@ body{
 
 .btn-register:hover{
     transform: scale(0.95);
-    background-color: #42251a;
     transition: 0.4s;
-    color: #d24511;
 }
 
 input{
@@ -147,7 +149,7 @@ p{
 }
 
 .copyright{
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 @keyframes fadeSlideIn{

@@ -71,8 +71,8 @@
                         <div>
                             <label>Kategori</label>
                             <select name="kategori">
-                                <option value="makanan berat">Makanan Ringan</option>
-                                <option value="makanan ringan">Makanan Berat</option>
+                                <option value="makanan berat">Makanan Berat</option>
+                                <option value="makanan ringan">Makanan Ringan</option>
                                 <option value="minuman">Minuman</option>
                             </select>
                         </div>

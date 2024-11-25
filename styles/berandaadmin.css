@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: 'poppins', sans-serif;
+    font-family: sans-serif;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -15,7 +18,7 @@ body {
     background-color: #D24511;
     top: 0;
     height: 60px;
-    padding: 5px 5%;
+    padding: 0 5%;
 }
 
 .navbar img {
@@ -27,6 +30,7 @@ body {
     flex-grow: 1;
     font-size: 2.5em;
     font-weight: 700;
+    font-family: 'Poppins';
     color: #F3E6E1;
     margin: auto 0;
 }

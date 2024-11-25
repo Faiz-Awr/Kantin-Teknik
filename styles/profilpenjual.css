@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: 'poppins', sans-serif;
+    font-family: sans-serif;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -20,7 +23,7 @@ hr {
     background-color: #D24511;
     top: 0;
     height: 60px;
-    padding: 5px 5%;
+    padding: 0 5%;
 }
 
 .navbar img {
@@ -32,6 +35,7 @@ hr {
     flex-grow: 1;
     font-size: 2.5em;
     font-weight: 700;
+    font-family: 'Poppins';
     color: #F3E6E1;
     margin: auto 0;
 }
@@ -229,4 +233,19 @@ hr {
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
+}
+
+button:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.beranda:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.logout:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }

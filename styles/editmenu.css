@@ -4,14 +4,13 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Poppins';
 }
 
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: 'poppins', sans-serif;
+    font-family: sans-serif;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -29,10 +28,9 @@ hr {
     background-color: #D24511;
     top: 0;
     height: 60px;
-    padding: 5px 5%;
+    padding: 0 5%;
     margin-bottom: 10px;
 }
-
 
 .navbar img {
     height: 90%;
@@ -286,4 +284,24 @@ hr {
     font-weight: 600;
     color: #F3E6E1;
     margin: auto;
+}
+.batal:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.simpan:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.tombol-edit:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.tombol-hapus:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.tambah-menu:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
 }

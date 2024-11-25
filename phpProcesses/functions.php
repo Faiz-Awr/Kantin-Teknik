@@ -1,6 +1,6 @@
 <?php
     function connection(){
-        $conn = mysqli_connect('localhost:3306','root','','dbspring');
+        $conn = mysqli_connect('localhost','root','','dbspring');
         if(!$conn){
             die('Connection failed'.mysqli_connect_error());
         }
@@ -24,6 +24,7 @@
                 $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
                 $_SESSION['nama_kantin'] = $data['nama_kantin'];
                 $_SESSION['nomor_telepon'] = $data['nomor_telepon'];
+                $_SESSION['foto'] = $data['foto_profile'];
                 return true;
             } else {
                 return false;
@@ -101,7 +102,6 @@
     }
 
     function addMenu($data, $files){
-        $conn = connection();
         $nama_menu = $data['nama_menu'];
         $harga = $data['harga'];
         $kategori = $data['kategori'];
@@ -146,7 +146,6 @@
     }
     
     function updateMenu($data, $files, $id, $fotoLama) {
-        $conn = connection();
         $nama_menu = $data['nama_menu'];
         $harga = $data['harga'];
         $kategori = $data['kategori'];
@@ -174,47 +173,101 @@
         return false; // Return false if the menu item with that id is not found
     }
 
-    function sendPayload($data) {
-        $conn = connection();
-
-        foreach ($_SESSION['temp_menu_data'] as $menu) {
-            $nama = $menu['nama'];
-            $harga = $menu['harga'];
-            $kategori = $menu['kategori'];
-            $foto = $menu['foto'];
-            $id = $menu['id'];
-
-            // Step 1: Check if the record exists
-            $checkQuery = "SELECT id FROM menu WHERE id = ?";
-            $stmt = mysqli_prepare($conn, $checkQuery);
-            mysqli_stmt_bind_param($stmt, 'i', $id);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            
-            // If the menu item with the given id exists, update it
-            if (mysqli_stmt_num_rows($stmt) > 0) {
-                // Step 2: Perform the update if the item exists
-                $updateQuery = "UPDATE menu SET nama = ?, harga = ?, kategori = ?, foto = ? WHERE id = ?";
-                $updateStmt = mysqli_prepare($conn, $updateQuery);
-                mysqli_stmt_bind_param($updateStmt, 'ssssi', $nama, $harga, $kategori, $foto, $id); // Corrected to 'ssssi'
-
-                if (!mysqli_stmt_execute($updateStmt)) {
-                    return false; // Return false if the update fails
+    function deleteMenu($id, $foto) {
+        foreach ($_SESSION['temp_menu_data'] as $key => $menu) {
+            if ($menu['id'] == $id) {
+                // Add the menu to deleted menu data for tracking
+                $_SESSION['deleted_menu_data'][] = $menu;
+                unset($_SESSION['temp_menu_data'][$key]);
+    
+                // Track the ID of the item to delete from the database
+                if (!isset($_SESSION['menu_ids_to_delete'])) {
+                    $_SESSION['menu_ids_to_delete'] = [];
                 }
-            } else {
-                // Step 3: If the item does not exist, insert it
-                $insertQuery = "INSERT INTO menu (nama, harga, kategori, foto) VALUES (?, ?, ?, ?)";
-                $insertStmt = mysqli_prepare($conn, $insertQuery);
-                mysqli_stmt_bind_param($insertStmt, 'ssss', $nama, $harga, $kategori, $foto);
-
-                if (!mysqli_stmt_execute($insertStmt)) {
-                    return false; // Return false if the insert fails
+                $_SESSION['menu_ids_to_delete'][] = $id;
+    
+                // Handle file deletion tracking
+                if (!empty($foto) && file_exists('../img/' . $foto)) {
+                    if (!isset($_SESSION['files_to_delete'])) {
+                        $_SESSION['files_to_delete'] = [];
+                    }
+                    $_SESSION['files_to_delete'][] = $foto;
                 }
+                return true; // Successfully deleted the menu item
             }
         }
+        return false; // Menu item with the given id not found
+    }
 
-        moveFiles(); // Move the files from /img_temp/ to /img/
-        return true;
+    function sendPayload() {
+        $conn = connection();
+    
+        // Begin transaction
+        mysqli_begin_transaction($conn);
+    
+        try {
+            // Process deletions from the database
+            if (isset($_SESSION['menu_ids_to_delete'])) {
+                $deleteQuery = "DELETE FROM menu WHERE id = ?";
+                $deleteStmt = mysqli_prepare($conn, $deleteQuery);
+    
+                foreach ($_SESSION['menu_ids_to_delete'] as $idToDelete) {
+                    mysqli_stmt_bind_param($deleteStmt, 'i', $idToDelete);
+                    if (!mysqli_stmt_execute($deleteStmt)) {
+                        throw new Exception("Failed to delete menu with ID $idToDelete: " . mysqli_error($conn));
+                    }
+                }
+                unset($_SESSION['menu_ids_to_delete']); // Clear the session variable after processing
+            }
+    
+            // Insert or update remaining menu items
+            foreach ($_SESSION['temp_menu_data'] as $menu) {
+                $nama = $menu['nama'];
+                $harga = $menu['harga'];
+                $kategori = $menu['kategori'];
+                $foto = $menu['foto'];
+                $id = $menu['id'];
+    
+                // Step 1: Check if the record exists
+                $checkQuery = "SELECT id FROM menu WHERE id = ?";
+                $stmt = mysqli_prepare($conn, $checkQuery);
+                mysqli_stmt_bind_param($stmt, 'i', $id);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+    
+                if (mysqli_stmt_num_rows($stmt) > 0) {
+                    // Step 2: Update existing record
+                    $updateQuery = "UPDATE menu SET nama = ?, harga = ?, kategori = ?, foto = ? WHERE id = ?";
+                    $updateStmt = mysqli_prepare($conn, $updateQuery);
+                    mysqli_stmt_bind_param($updateStmt, 'ssssi', $nama, $harga, $kategori, $foto, $id);
+    
+                    if (!mysqli_stmt_execute($updateStmt)) {
+                        throw new Exception("Failed to update menu with ID $id: " . mysqli_error($conn));
+                    }
+                } else {
+                    // Step 3: Insert new record
+                    $insertQuery = "INSERT INTO menu (nama, harga, kategori, foto) VALUES (?, ?, ?, ?)";
+                    $insertStmt = mysqli_prepare($conn, $insertQuery);
+                    mysqli_stmt_bind_param($insertStmt, 'ssss', $nama, $harga, $kategori, $foto);
+    
+                    if (!mysqli_stmt_execute($insertStmt)) {
+                        throw new Exception("Failed to insert menu: " . mysqli_error($conn));
+                    }
+                }
+            }
+    
+            // Move files after successful database updates
+            moveFiles();
+    
+            mysqli_commit($conn); // Commit transaction
+            return true;
+        } catch (Exception $e) {
+            mysqli_rollback($conn); // Rollback on failure
+            error_log($e->getMessage()); // Log the error for debugging
+            return false;
+        } finally {
+            mysqli_close($conn); // Ensure connection is closed
+        }
     }
 
     function moveFiles() {
@@ -269,6 +322,69 @@
                 }
             }
             unset($_SESSION['files_to_delete']);
+        }
+    }
+
+    function updatePenjual($data) {
+        $conn = connection();
+        $id = $_SESSION['id'];
+        $nama_lengkap = $data['nama'];
+        $nama_kantin = $data['kantin'];
+        $nomor_telepon = $data['telepon'];
+        $email = $data['email'];
+        $password = $data['password'];
+    
+        // Update query
+        $query = "
+            UPDATE penjual 
+            SET 
+                nama_lengkap = '$nama_lengkap',
+                nama_kantin = '$nama_kantin',
+                nomor_telepon = '$nomor_telepon',
+                email = '$email',
+                password = '$password'
+            WHERE id = '$id'
+        ";
+    
+        if (mysqli_query($conn, $query)) {
+            // Update session data
+            $_SESSION['nama_lengkap'] = $nama_lengkap;
+            $_SESSION['nama_kantin'] = $nama_kantin;
+            $_SESSION['nomor_telepon'] = $nomor_telepon;
+            $_SESSION['email'] = $email;
+    
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function getAntrian(){
+        $conn = connection();
+        $query = "  SELECT p.id as 'id_pesanan', p.nama_pemesan, p.no_tlp_pemesan, p.jumlah, p.total_harga, m.nama,
+                    CASE
+                        WHEN P.STATUS_PESANAN = 0 THEN 'PESANAN BELUM SELESAI' ELSE 'PESANAN SUDAH SELESAI'
+                    END AS 'status'
+                    FROM PESANAN P
+                    JOIN MENU M
+                    ON M.ID = P.ID_MENU
+                    WHERE P.ID_PENJUAL = ".$_SESSION['id']." AND P.STATUS_PESANAN = 0
+                 ";
+        $result = mysqli_query($conn, $query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    function selesaiAntrian($id){
+        $conn = connection();
+        $query = "UPDATE pesanan SET status_pesanan = 1 WHERE id = $id";
+        if(mysqli_query($conn, $query)){
+            return true;
+        } else {
+            return false;
         }
     }
 ?>
