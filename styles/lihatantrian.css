@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: sans-serif;
+    font-family: poppins;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -14,6 +14,10 @@ body {
 hr {
     margin: 0 5%;
     border: 1px solid #D24511;
+}
+
+form {
+    margin: auto;
 }
 
 .navbar {
@@ -66,43 +70,70 @@ hr {
     margin: auto;
 }
 
-.tombol-edit {
-    margin-top: 2px;
-    height: 20px;
-    width: 100%;
-    text-decoration: none;
-}
-
-.tombol-edit div {
-    display: flex;
-    background-color: #42251A;
-    
-    border-radius: 15px;
-}
-.tombol-edit div span {
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3E6E1;
-    margin: auto;
-}
-
 .judul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 0 5%;
 }
 
 .judul h1 {
     margin: 0;
+    padding: 20px 0 0 0;
     font-size: 3em;
     font-weight: 700;
     color: #D24511;
-    margin-right: 30%;
+    text-align: center;
+}
+
+.antrian {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+    overflow-y: scroll;
+}
+
+.antrian::-webkit-scrollbar {
+    display: none;
+}
+
+.antrian-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.antrian-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.antrian-content table th {
+    background-color: #D24511;
+    color: #F3E6E1;
+    padding: 10px;
+    font-size: 1.25em;
+}
+
+.antrian-content table tr:nth-child(odd) {
+    background-color: #ECCDC2;
+}
+
+.antrian-content table tr:nth-child(even) {
+    background-color: #ebd7d0;
+}
+
+.antrian-content table td {
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.25em;
 }
 
 .footer {
     margin: 0px;
     text-align: center;
+    bottom: 0;
     margin-top: auto;
 }
 
@@ -142,6 +173,21 @@ hr {
     margin: auto;
 }
 .judul a:hover{
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.selesai {
+    background-color: #42251A;
+    color: #ECCDC2;
+    height: 36px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.selesai:hover{
     transform: scale(0.95);
     transition: transform 0.3s ease;
 }
