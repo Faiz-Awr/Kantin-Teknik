@@ -1,6 +1,7 @@
 <?php
     require '../phpProcesses/functions.php';
     session_start();
+    cekLogin();
     
     if(!isset($_SESSION['temp_menu_data'])){
         $data = getMenu();
@@ -28,7 +29,7 @@
     if(isset($_POST['save_changes'])){
         if (sendPayload($_SESSION['temp_menu_data'])) {
             unset($_SESSION['temp_menu_data']);
-            header('Location: ../berandaadmin.php');
+            header('Location: ../admin/berandaadmin.php');
             exit();
         } else {
             echo 'Simpan perubahan gagal';
@@ -51,7 +52,7 @@
             }
         }
         unset($_SESSION['temp_menu_data']);
-        header('Location: ../berandaadmin.php');
+        header('Location: ../admin/berandaadmin.php');
         exit();
     }
 ?>

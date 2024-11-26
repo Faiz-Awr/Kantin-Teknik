@@ -1,11 +1,7 @@
 <?php
     require_once 'phpProcesses/functions.php';
     session_start();
-
-    if (!isset($_SESSION['id'])) {
-        header('Location: login.php');
-        exit();
-    }
+    cekLogin();
 
     if (isset($_POST['simpan']) ) {
         // Assign default values if inputs are empty
@@ -115,7 +111,7 @@
 </head>
 <body>
     <header class="navbar">
-        <img src="assets/logo.png" alt="">
+        <img src="../assets/logo.png" alt="">
         <span>Kantin Teknik</span>
     </header>
     <section class="profil">

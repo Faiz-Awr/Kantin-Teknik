@@ -1,9 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['id'])){
-        header('Location: login');
-        exit();
-    }
+    cekLogin();
 
     if(isset($_SESSION['temp_menu_data'])){
         $tempDir = '../img_temp/';
@@ -37,7 +34,7 @@
     <link rel="stylesheet" href="styles/berandaadmin.css">
 </head>
 <body>
-    <?php include("navbar.php")?>
+    <?php include("../navbar.php")?>
     <section class="judul">
         <h2>Selamat Datang <?php echo $_SESSION['nama_lengkap']?></h2>
         <h1><?php echo $_SESSION['nama_kantin']?></h1>

@@ -1,6 +1,7 @@
 <?php
     require '../phpProcesses/functions.php';
     session_start();
+    cekLogin();
 
     if(isset($_POST['tambah'])){
         if(addMenu($_POST, $_FILES)){

@@ -15,10 +15,9 @@
             exit();
         }
 
-
         if(isset($_POST['Login'])){
             if(login($_POST)){
-                header('Location: ../berandaadmin.php');
+                header('Location: ../admin/berandaadmin.php');
                 exit();
             } else {
                 echo '<script>

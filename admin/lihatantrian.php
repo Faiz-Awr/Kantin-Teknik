@@ -1,6 +1,7 @@
 <?php
     require_once 'phpProcesses/functions.php';
     session_start();
+    cekLogin();
     $antrian = getAntrian();
 
     if(isset($_POST['selesai'])){
@@ -21,7 +22,7 @@
     <link rel="stylesheet" href="styles/lihatantrian.css">
 </head>
 <body>
-    <?php include('navbar.php')?>
+    <?php include('../navbar.php')?>
     <section class="judul">
         <h1>Antrian Pesanan</h1>
         <a href="berandaadmin.php">

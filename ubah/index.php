@@ -1,6 +1,7 @@
 <?php
     require '../phpProcesses/functions.php';
     session_start();
+    cekLogin();
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     foreach ($_SESSION['temp_menu_data'] as  $menu) {
