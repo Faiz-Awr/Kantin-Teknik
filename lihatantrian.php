@@ -9,7 +9,6 @@
         header('Location: lihatantrian.php');
     }
 
-    print_r($antrian);
 ?>
 
 

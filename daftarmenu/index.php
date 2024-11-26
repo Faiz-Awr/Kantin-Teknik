@@ -2,6 +2,30 @@
     require '../phpProcesses/functions.php';
     session_start();
 
+    if (!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = [];
+    }
+
+    if (!isset($_SESSION['total'])){
+        $_SESSION['total'] = 0;
+    }
+    
+    if (!isset($total)){
+        $total = 0;
+    }
+
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $conn = connection();
+        $query = "SELECT * FROM menu WHERE id = $id";
+        $result = mysqli_query($conn, $query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+    
+    }
+
     $conn = connection();
     $query = "SELECT * FROM menu";
     $result = mysqli_query($conn, $query);
@@ -21,6 +45,47 @@
     $minuman = array_filter($data, function($menu) {
         return $menu['kategori'] == 'minuman';
     });
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['tambah'])) {
+            addToCart($_POST);
+    
+            // Recalculate the total after adding to the cart
+            $total = 0;
+            foreach ($_SESSION['cart'] as $item) {
+                $total += $item['price'] * $item['quantity'];
+            }
+            $_SESSION['total'] = $total; // Update the session value
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        } elseif (isset($_POST['hapus'])) {
+            removeFromCart($_POST);
+    
+            // Recalculate the total after removing from the cart
+            $total = 0;
+            foreach ($_SESSION['cart'] as $item) {
+                $total += $item['price'] * $item['quantity'];
+            }
+            $_SESSION['total'] = $total; // Update the session value
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        } elseif (isset($_POST['submit-pembayaran'])) {
+            $jenis_pembayaran = $_POST['jenis-pembayaran'] ?? '';
+    
+            // Add the 3000 tax to the session's total value
+            $_SESSION['total'] = isset($_SESSION['total']) ? $_SESSION['total'] + 3000 : 3000;
+    
+            if ($jenis_pembayaran === 'tunai') {
+                header('Location: ../checkout/struk-tunai.php');
+                exit();
+            } elseif ($jenis_pembayaran === 'cashless') {
+                header('Location: ../checkout/struk-qr.php');
+                exit();
+            } else {
+                echo '<script>alert("Invalid payment method selected.");</script>';
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -70,76 +135,70 @@
         </div>
         <div class="isi-keranjang">
             <!-- perulangan pesanan -->
-            <div class="pesanan">
-                <div class="isi-pesanan">
-                    <div class="isimenu1">
-                        <img src="../assets/naskun.jpg" alt="Nasi Kuning">
-                        <div class="deskripsi-menu-pesanan">
-                            <h3>Nasi Kuning</h3>
-                            <p>Rp. 20.000</p>
+            <div class="isi-keranjang">
+                <?php if (!empty($_SESSION['cart'])): ?>
+                    <?php foreach ($_SESSION['cart'] as $id => $item): ?>
+                        <div class="pesanan">
+                            <div class="isi-pesanan">
+                                <div class="isimenu1">
+                                    <img src="../img/<?php echo $item['image'] ?? 'default.jpg'; ?>" alt="<?php echo $item['name']; ?>">
+                                    <div class="deskripsi-menu-pesanan">
+                                        <h3><?php echo $item['name']; ?></h3>
+                                        <p>Rp. <?php echo number_format($item['price'], 0, ',', '.'); ?></p>
+                                    </div>
+                                </div>
+                                <div class="isimenu2">
+                                    <div class="quantity"><?php echo $item['quantity']; ?></div>
+                                </div>
+                                <div class="isimenu3">
+                                    <p class="price">Rp. <?php echo number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></p>
+                                </div>
+                            </div>
+                            <div class="catatan">
+                                <form method="POST" action="index.php">
+                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                    <input type="hidden" name="id_penjual" value="<?php echo $id_penjual; ?>">
+                                    <button type="submit" class="hapus-pesanan" name="hapus"><img src="../assets/sampah.png" alt=""></button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="isimenu2">
-                        <div class="quantity">1</div>
-                    </div>
-                    <div class="isimenu3">
-                        <p class="price">Rp. 20.000</p>
-                    </div>
-                </div>
-                <div class="catatan">
-                    <input type="text" placeholder="Catatan">
-                    <button class="hapus-pesanan"><img src="../assets/sampah.png" alt=""></button>
-                </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Keranjang Anda kosong.</p>
+                <?php endif; ?>
             </div>
-            <div class="pesanan">
-                <div class="isi-pesanan">
-                    <div class="isimenu1">
-                        <img src="../assets/esteh.png" alt="Nasi Kuning">
-                        <div class="deskripsi-menu-pesanan">
-                            <h3>Es Teh</h3>
-                            <p>Rp. 5.000</p>
-                        </div>
-                    </div>
-                    <div class="isimenu2">
-                        <div class="quantity">2</div>
-                    </div>
-                    <div class="isimenu3">
-                        <p class="price">Rp. 10.000</p>
-                    </div>
-                </div>
-                <div class="catatan">
-                    <input type="text" placeholder="Catatan">
-                    <button class="hapus-pesanan"><img src="../assets/sampah.png" alt=""></button>
-                </div>
-            </div>
+            <!-- end perulangan -->
         </div>
-        <div class="pembayaran">
-            <hr>
-            <div class="harga">
-                <span>Harga</span>
-                <span>Rp. 30.000</span>
-            </div>
-            <div class="pajak">
-                <span>Pajak</span>
-                <span>Rp. 3.000</span>
-            </div>
-            <hr>
-            <div class="total">
-                <span>Total Pembayaran</span>
-                <span>Rp. 33.000</span>
-            </div>
-            <select name="jenis-pembayaran">
-                <option value="tunai">Tunai</option>
-                <option value="cashless">Cashless</option>
-            </select>
-            <a href="../checkout/struk-tunai.html" class="tombol-pembayaran">
-                <div>
-                    <span>
-                        Lanjutkan Pembayaran
-                    </span>
+        <form method="POST" action="">
+            <div class="pembayaran">
+                <hr>
+                <div class="harga">
+                    <span>Harga</span>
+                    <span>Rp. <?php echo number_format($_SESSION['total'] ?? 0, 0, ',', '.'); ?></span>
                 </div>
-            </a>
-        </div>
+                <div class="pajak">
+                    <span>Pajak</span>
+                    <span>Rp. 3.000</span>
+                </div>
+                <hr>
+                <div class="total">
+                    <span>Total Pembayaran</span>
+                    <span>Rp. <?php echo number_format(($_SESSION['total'] + 3000), 0, ',', '.'); ?></span>
+                </div>
+                <select name="jenis-pembayaran" required>
+                    <option value="" disabled selected>Pilih jenis pembayaran</option>
+                    <option value="tunai">Tunai</option>
+                    <option value="cashless">Cashless</option>
+                </select>
+                <button type="submit" name="submit-pembayaran" class="tombol-pembayaran">
+                    <div>
+                        <span>
+                            Lanjutkan Pembayaran
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </form>
     </div>
 
     <section class="kategori-bar">
@@ -173,17 +232,13 @@
                             </div>
                         </div>
                         <div class="aksi-menu">
-                            <?php if ($menu['nama'] == 'Nasi Goreng') : ?>
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/minus-sm.png" alt=""></button>
-                                </div>
-                                <input type="number" value="1" class="jumlah-menu">
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/plus-sm.png" alt=""></button>
-                                </div>
-                            <?php else : ?>
-                                <button class="btn-tambah">Tambah</button>
-                            <?php endif; ?>
+                            <form method="POST" action="index.php">
+                                <input type="hidden" name="id" value="<?php echo $menu['id']; ?>">
+                                <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
+                                <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
+                                <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -201,17 +256,13 @@
                             </div>
                         </div>
                         <div class="aksi-menu">
-                            <?php if ($menu['nama'] == 'Nasi Goreng') : ?>
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/minus-sm.png" alt="Kurangi"></button>
-                                </div>
-                                <input type="number" value="1" class="jumlah-menu" readonly>
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/plus-sm.png" alt="Tambah"></button>
-                                </div>
-                            <?php else : ?>
-                                <button class="btn-tambah">Tambah</button>
-                            <?php endif; ?>
+                            <form method="POST" action="index.php">
+                                <input type="hidden" name="id" value="<?php echo $menu['id']; ?>">
+                                <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
+                                <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
+                                <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -229,17 +280,13 @@
                             </div>
                         </div>
                         <div class="aksi-menu">
-                            <?php if ($menu['nama'] == 'Nasi Goreng') : ?>
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/minus-sm.png" alt="Kurangi"></button>
-                                </div>
-                                <input type="number" value="1" class="jumlah-menu" readonly>
-                                <div class="tombol-aksi-menu">
-                                    <button class="btn-aksi"><img src="../assets/plus-sm.png" alt="Tambah"></button>
-                                </div>
-                            <?php else : ?>
-                                <button class="btn-tambah">Tambah</button>
-                            <?php endif; ?>
+                            <form method="POST" action="index.php">
+                                <input type="hidden" name="id" value="<?php echo $menu['id']; ?>">
+                                <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
+                                <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
+                                <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                            </form>
                         </div>
                     </div>
                 <?php endforeach; ?>

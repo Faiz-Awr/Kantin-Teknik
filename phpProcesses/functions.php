@@ -387,4 +387,57 @@
             return false;
         }
     }
+
+    function addToCart($data){
+        $id = $data['id'];
+        $name = $data['name'];
+        $price = $data['price'];
+        $id_penjual = $data['id_penjual'];
+    
+        // Check if the item is already in the cart
+        if (isset($_SESSION['cart'][$id])) {
+            $_SESSION['cart'][$id]['quantity'] += 1;
+        } else {
+            $_SESSION['cart'][$id] = [
+                'name' => $name,
+                'price' => $price,
+                'quantity' => 1,
+                'id_penjual' => $id_penjual
+            ];
+        }
+    }
+
+    function removeFromCart($data) {
+        $id = $data['id'];
+
+        if (isset($_SESSION['cart'][$id])) {
+            unset($_SESSION['cart'][$id]);
+        }
+    }
+
+    function clearCart() {
+        unset($_SESSION['cart']);
+        unset($_SESSION['total']);
+    }
+
+    function addToPesanan($cart, $customer_data) {
+        $conn = connection();
+    
+        $nama_pemesan = $customer_data['nama_pemesan'];
+        $no_tlp_pemesan = $customer_data['no_tlp_pemesan'];
+    
+        foreach ($cart as $menu_id => $item) {
+            $id_penjual = $item['id_penjual']; // Use NULL if `id_penjual` is missing
+            $jumlah = $item['quantity'];
+            $total_harga = $item['price'] * $jumlah;
+    
+            $query = "INSERT INTO pesanan (id_penjual, id_menu, jumlah, total_harga, nama_pemesan, no_tlp_pemesan, status_pesanan)
+                      VALUES ($id_penjual, $menu_id, $jumlah, $total_harga, '$nama_pemesan', '$no_tlp_pemesan', 0)";
+    
+            if (!mysqli_query($conn, $query)) {
+                return false;
+            }
+        }
+        return true;
+    }
 ?>
