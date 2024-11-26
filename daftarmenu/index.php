@@ -72,9 +72,6 @@
         } elseif (isset($_POST['submit-pembayaran'])) {
             $jenis_pembayaran = $_POST['jenis-pembayaran'] ?? '';
     
-            // Add the 3000 tax to the session's total value
-            $_SESSION['total'] = isset($_SESSION['total']) ? $_SESSION['total'] + 3000 : 3000;
-    
             if ($jenis_pembayaran === 'tunai') {
                 header('Location: ../checkout/struk-tunai.php');
                 exit();
@@ -178,12 +175,12 @@
                 </div>
                 <div class="pajak">
                     <span>Pajak</span>
-                    <span>Rp. 3.000</span>
+                    <span>Rp. <?php echo number_format(isset($_SESSION['total']) ? $_SESSION['total'] * 0.01 : 0, 0, ',', '.') ?></span>
                 </div>
                 <hr>
                 <div class="total">
                     <span>Total Pembayaran</span>
-                    <span>Rp. <?php echo number_format(($_SESSION['total'] + 3000), 0, ',', '.'); ?></span>
+                    <span>Rp. <?php echo number_format(isset($_SESSION['total']) ? $_SESSION['total'] + $_SESSION['total'] * 0.01 : 0, 0, ',', '.'); ?></span>
                 </div>
                 <select name="jenis-pembayaran" required>
                     <option value="" disabled selected>Pilih jenis pembayaran</option>

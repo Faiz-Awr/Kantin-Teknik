@@ -82,16 +82,16 @@
                     <hr>
                     <div class="harga">
                         <span>Harga</span>
-                        <span>Rp. <?php echo number_format(($_SESSION['total'] ?? 0) - 3000, 0, ',', '.'); ?></span>
+                        <span>Rp. <?php echo number_format(($_SESSION['total'] ?? 0), 0, ',', '.'); ?></span>
                     </div>
                     <div class="pajak">
                         <span>Pajak</span>
-                        <span>Rp. 3.000</span>
+                        <span>Rp. <?php echo isset($_SESSION['total']) ? $_SESSION['total'] * 0.01 : 0?></span>
                     </div>
                     <hr>
                     <div class="total">
                         <span>Total Pembayaran</span>
-                        <span>Rp. <?php echo number_format($_SESSION['total'] ?? 0, 0, ',', '.'); ?></span>
+                        <span>Rp. <?php echo number_format($_SESSION['total'] ? $_SESSION['total'] + $_SESSION['total'] * 0.01 : 0, 0, ',', '.'); ?></span>
                     </div>
                 </div>
             </div>
@@ -117,10 +117,12 @@
                     <p>Konfirmasi jika setuju kemudian lanjutkan pembayaran ke kasir.</p>
                     <div class="button-pembayaran">
                         <button type="submit" name="confirm" class="button">Konfirmasi</button>
-                        <button type="submit" name="cancel" class="button">Batal</button>
+            </form>
+                        <form method="POST" action="">
+                            <button type="submit" name="cancel" class="button">Batal</button>
+                        </form>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </body>
