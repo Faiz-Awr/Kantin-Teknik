@@ -49,7 +49,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['tambah'])) {
             addToCart($_POST);
-    
+            
             // Recalculate the total after adding to the cart
             $total = 0;
             foreach ($_SESSION['cart'] as $item) {
@@ -234,6 +234,7 @@
                                 <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
                                 <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
                             </form>
                         </div>
@@ -258,6 +259,7 @@
                                 <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
                                 <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
                             </form>
                         </div>
@@ -282,6 +284,7 @@
                                 <input type="hidden" name="name" value="<?php echo $menu['nama']; ?>">
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
+                                <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
                                 <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
                             </form>
                         </div>

@@ -393,6 +393,7 @@
         $name = $data['name'];
         $price = $data['price'];
         $id_penjual = $data['id_penjual'];
+        $foto = $data['foto'];
     
         // Check if the item is already in the cart
         if (isset($_SESSION['cart'][$id])) {
@@ -402,7 +403,8 @@
                 'name' => $name,
                 'price' => $price,
                 'quantity' => 1,
-                'id_penjual' => $id_penjual
+                'id_penjual' => $id_penjual,
+                'image' => $foto
             ];
         }
     }
