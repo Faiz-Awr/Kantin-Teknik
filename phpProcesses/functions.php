@@ -125,6 +125,20 @@
 
         return true;
     }
+    
+    function reduceMenu($id) {
+        foreach ($_SESSION['temp_menu_data'] as $key => $menu) {
+            if ($menu['id'] == $id) {
+                if ($_SESSION['temp_menu_data'][$key]['jumlah'] > 1) {
+                    $_SESSION['temp_menu_data'][$key]['jumlah'] -= 1;
+                } else {
+                    unset($_SESSION['temp_menu_data'][$key]);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
     function getMenu(){
         $conn = connection();
@@ -444,6 +458,8 @@
     }
 
     function cekLogin(){
+        if(!isset($_SESSION)){
+            header('Location: logout.php');
         if(!isset($_SESSION['id'])){
             header('Location: ../login');
             exit();

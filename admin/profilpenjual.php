@@ -125,7 +125,7 @@
                             <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
                             <!-- Preview image that acts as the upload button -->
                             <button type="button" class="upload-icon" onclick="document.getElementById('imageInput').click();" style="border: none; background: none;">
-                                <img id="imagePreview" src="<?php echo isset($_SESSION['foto']) ? 'img/' . $_SESSION['foto'] : 'assets/person-brown.png'?>" alt="Preview" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+                                <img id="imagePreview" src="<?php echo '../' . isset($_SESSION['foto']) ? '../img/' . $_SESSION['foto'] : '../assets/person-brown.png'?>" alt="Preview" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
                             </button>
                         </div>
                         <div class="upload-photo">

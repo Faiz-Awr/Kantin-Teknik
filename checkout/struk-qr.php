@@ -69,9 +69,6 @@
                                         <p class="price">Rp. <?php echo number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></p>
                                     </div>
                                 </div>
-                                <div class="catatan">
-                                    <input type="text" placeholder="Catatan" readonly>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -117,10 +114,10 @@
                     <img src="../assets/qrcode.jpg" alt="QR Code for Payment">
                     <p>Silakan scan QR code untuk melanjutkan pembayaran.</p>
                     <div class="button-pembayaran">
-                        <button type="submit" name="confirm" class="button">Konfirmasi</button>
+                        <button type="submit" name="confirm" class="button-konfirmasi">Konfirmasi</button>
             </form> 
                         <form method="post" action="">
-                        <button type="submit" name="cancel" class="button">Batal</button>
+                        <button type="submit" name="cancel" class="button-batal">Batal</button>
                         </form>
                     </div>
                 </div>

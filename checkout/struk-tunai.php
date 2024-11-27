@@ -68,9 +68,6 @@
                                         <p class="price">Rp. <?php echo number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></p>
                                     </div>
                                 </div>
-                                <div class="catatan">
-                                    <input type="text" placeholder="Catatan" readonly>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -116,10 +113,10 @@
                     <h3>Pembayaran Tunai</h3>
                     <p>Konfirmasi jika setuju kemudian lanjutkan pembayaran ke kasir.</p>
                     <div class="button-pembayaran">
-                        <button type="submit" name="confirm" class="button">Konfirmasi</button>
+                        <button type="submit" name="confirm" class="button-konfirmasi">Konfirmasi</button>
             </form>
                         <form method="POST" action="">
-                            <button type="submit" name="cancel" class="button">Batal</button>
+                            <button type="submit" name="cancel" class="button-batal">Batal</button>
                         </form>
                     </div>
                 </div>

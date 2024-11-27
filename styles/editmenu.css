@@ -6,11 +6,15 @@
     box-sizing: border-box;
 }
 
+button {
+    font-size: 1.0em;
+}
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: sans-serif;
+    font-family: 'poppins';
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -245,6 +249,7 @@ hr {
     border-radius: 15px;
     text-decoration: none;
     justify-content: center;
+    border: none;
 }
 
 .footer {
