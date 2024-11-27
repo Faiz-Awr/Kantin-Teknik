@@ -1,5 +1,5 @@
 <?php
-    require_once 'phpProcesses/functions.php';
+    require_once '../phpProcesses/functions.php';
     session_start();
     cekLogin();
 
@@ -107,7 +107,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Penjual</title>
-    <link rel="stylesheet" href="styles/profilpenjual.css">
+    <link rel="stylesheet" href="../styles/profilpenjual.css">
 </head>
 <body>
     <header class="navbar">
@@ -125,7 +125,7 @@
                             <input type="file" id="imageInput" name="image" accept="image/*" style="display: none;">
                             <!-- Preview image that acts as the upload button -->
                             <button type="button" class="upload-icon" onclick="document.getElementById('imageInput').click();" style="border: none; background: none;">
-                                <img id="imagePreview" src="<?php echo isset($_SESSION['foto']) ? 'img/' . $_SESSION['foto'] : 'assets/person-brown.png'?>" alt="Preview" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
+                                <img id="imagePreview" src="<?php echo '../' . isset($_SESSION['foto']) ? '../img/' . $_SESSION['foto'] : '../assets/person-brown.png'?>" alt="Preview" style="cursor: pointer; width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc;">
                             </button>
                         </div>
                         <div class="upload-photo">
@@ -158,7 +158,7 @@
                     <div class="tombol">
                         <button type="submit" name="simpan">Simpan Perubahan</button>
                         <a href="berandaadmin.php"class="beranda"><div><span>Beranda</span></div></a>
-                        <a class="logout" href="logout.php" ><div><span>Keluar Akun</span></div></a>
+                        <a class="logout" href="../logout.php" ><div><span>Keluar Akun</span></div></a>
                     </div>
                 </div>
                 <div class="kanan">

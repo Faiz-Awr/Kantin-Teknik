@@ -58,6 +58,28 @@
             $_SESSION['total'] = $total; // Update the session value
             header("Location: " . $_SERVER['PHP_SELF']);
             exit();
+        } elseif (isset($_POST['kurang'])) {
+            reduceMenu($id);
+            if (isset($_POST['id'])) {
+                $id = $_POST['id'];
+                if (isset($_SESSION['cart'][$id])) {
+                    if ($_SESSION['cart'][$id]['quantity'] > 1) {
+                        $_SESSION['cart'][$id]['quantity']--;
+                    } else {
+                        unset($_SESSION['cart'][$id]);
+                    }
+                }
+                
+                // Recalculate the total after reducing the quantity
+                $total = 0;
+                foreach ($_SESSION['cart'] as $item) {
+                    $total += $item['price'] * $item['quantity'];
+                }
+                $_SESSION['total'] = $total; // Update the session value
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit();
+            }
+
         } elseif (isset($_POST['hapus'])) {
             removeFromCart($_POST);
     
@@ -114,12 +136,12 @@
             </div>
             <h2>Tipe Pemesanan</h2>
             <div class="tipe-pemesanan">
-                <div>
-                    <input type="radio" id="dine-in" name="tipe-pemesanan" value="dine-in">
+                <div class="tombol-tipe-pemesanan">
+                    <input type="radio" id="dine-in" name="tipe-pemesanan" value="dine-in" required>
                     <label for="dine-in">Dine In</label>
                 </div>
-                <div>
-                    <input type="radio" id="takeout" name="tipe-pemesanan" value="takeout">
+                <div class="tombol-tipe-pemesanan">
+                    <input type="radio" id="takeout" name="tipe-pemesanan" value="takeout" required>
                     <label for="takeout">Takeout</label>
                 </div>
             </div>
@@ -152,16 +174,20 @@
                                 </div>
                             </div>
                             <div class="catatan">
-                                <form method="POST" action="index.php">
+                                <form method="POST" action="index.php" class="tombol-aksi-keranjang">
                                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                                     <input type="hidden" name="id_penjual" value="<?php echo $id_penjual; ?>">
+                                    <div class="quantity-keranjang">
+                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
+                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                    </div>
                                     <button type="submit" class="hapus-pesanan" name="hapus"><img src="../assets/sampah.png" alt=""></button>
                                 </form>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>Keranjang Anda kosong.</p>
+                    <p class="menu-kosong">Keranjang Anda kosong.</p>
                 <?php endif; ?>
             </div>
             <!-- end perulangan -->
@@ -235,7 +261,15 @@
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
                                 <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
-                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php if (isset($_SESSION['cart'][$menu['id']])): ?>
+                                    <div class="quantity-controls">
+                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
+                                        <span class="quantity"><?php echo $_SESSION['cart'][$menu['id']]['quantity']; ?></span>
+                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                    </div>
+                                <?php else: ?>
+                                    <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php endif; ?>
                             </form>
                         </div>
                     </div>
@@ -260,7 +294,15 @@
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
                                 <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
-                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php if (isset($_SESSION['cart'][$menu['id']])): ?>
+                                    <div class="quantity-controls">
+                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
+                                        <span class="quantity"><?php echo $_SESSION['cart'][$menu['id']]['quantity']; ?></span>
+                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                    </div>
+                                <?php else: ?>
+                                    <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php endif; ?>
                             </form>
                         </div>
                     </div>
@@ -285,7 +327,15 @@
                                 <input type="hidden" name="price" value="<?php echo $menu['harga']; ?>">
                                 <input type="hidden" name="id_penjual" value="<?php echo $menu['id_penjual']?>">
                                 <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
-                                <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php if (isset($_SESSION['cart'][$menu['id']])): ?>
+                                    <div class="quantity-controls">
+                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
+                                        <span class="quantity"><?php echo $_SESSION['cart'][$menu['id']]['quantity']; ?></span>
+                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                    </div>
+                                <?php else: ?>
+                                    <button type="submit" class="btn-tambah" name="tambah">Tambah</button>
+                                <?php endif; ?>
                             </form>
                         </div>
                     </div>

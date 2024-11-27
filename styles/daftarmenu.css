@@ -35,6 +35,7 @@ hr {
     margin-bottom: 20px;
     height: 60px;
     padding: 5px 5%;
+    position: sticky;
 }
 
 .navbar a {
@@ -163,7 +164,7 @@ hr {
     margin: 5px 0 10px 0;
 }
 
-.tipe-pemesanan div {
+.tombol-tipe-pemesanan {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -175,16 +176,16 @@ hr {
     cursor: pointer;
 }
 
-.tipe-pemesanan div input {
+.tombol-tipe-pemesanan input {
     display: none;
 }
 
-.tipe-pemesanan div:hover{
+.tombol-tipe-pemesanan:hover{
     transform: scale(0.95);
     transition: transform 0.3s ease;
 }
 
-.tipe-pemesanan div label {
+.tombol-tipe-pemesanan label {
     color: #ECCDC2;
     font-size: 1em;
     margin: auto;
@@ -420,6 +421,9 @@ a{
     margin: 0 5% 20px 5%;
     background-color: #ECCDC2;
     border-radius: 5px;
+    position: sticky;
+    top: 80px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .menu-kategori {
@@ -507,12 +511,13 @@ a{
 
 .menu {
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 168px);
+    grid-template-rows: repeat(auto-fill);
     gap: 10px;
     margin-bottom: 30px;
     height: 100%;
-    max-width: 100%;
+    width: 100%;
 }
 
 /* Gaya untuk masing-masing menu item */
@@ -571,10 +576,11 @@ a{
     background-color: #42251A;
     color: #ECCDC2;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 12px;
     padding: 6px;
-    height: 36px;
+    height: 50px;
+    width: 100%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -616,4 +622,32 @@ a{
     margin-top: 10px;
     background-color: #42251A;
     color: #ECCDC2;
+}
+
+.menu-kosong {
+    margin: auto;
+    font-size: 1.5em;
+    color: #42251A;
+}
+
+.quantity-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.quantity-keranjang  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.tombol-aksi-keranjang {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }

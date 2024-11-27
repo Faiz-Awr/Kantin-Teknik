@@ -1,6 +1,6 @@
 <?php
     function connection(){
-        $conn = mysqli_connect('localhost:3307','root','','dbspring');
+        $conn = mysqli_connect('localhost','root','','dbspring');
         if(!$conn){
             die('Connection failed'.mysqli_connect_error());
         }
@@ -124,6 +124,20 @@
         ];
 
         return true;
+    }
+    
+    function reduceMenu($id) {
+        foreach ($_SESSION['temp_menu_data'] as $key => $menu) {
+            if ($menu['id'] == $id) {
+                if ($_SESSION['temp_menu_data'][$key]['jumlah'] > 1) {
+                    $_SESSION['temp_menu_data'][$key]['jumlah'] -= 1;
+                } else {
+                    unset($_SESSION['temp_menu_data'][$key]);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     function getMenu(){
@@ -445,7 +459,7 @@
 
     function cekLogin(){
         if(!isset($_SESSION)){
-            header('Location: login.php');
+            header('Location: logout.php');
             exit();
         }
     }
