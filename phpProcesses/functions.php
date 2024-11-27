@@ -1,6 +1,6 @@
 <?php
     function connection(){
-        $conn = mysqli_connect('localhost','root','','dbspring');
+        $conn = mysqli_connect('localhost:3307','root','','dbspring');
         if(!$conn){
             die('Connection failed'.mysqli_connect_error());
         }
@@ -460,6 +460,8 @@
     function cekLogin(){
         if(!isset($_SESSION)){
             header('Location: logout.php');
+        if(!isset($_SESSION['id'])){
+            header('Location: ../login');
             exit();
         }
     }

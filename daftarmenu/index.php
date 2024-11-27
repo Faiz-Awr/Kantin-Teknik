@@ -17,25 +17,26 @@
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         $conn = connection();
-        $query = "SELECT * FROM menu WHERE id = $id";
+        $query = "SELECT * FROM menu WHERE id_penjual = $id";
         $result = mysqli_query($conn, $query);
         $data = [];
         while($row = mysqli_fetch_assoc($result)){
             $data[] = $row;
         }
     
-    }
+    } else{
+        $conn = connection();
+        $query = "SELECT * FROM menu";
+        $result = mysqli_query($conn, $query);
+        $data = [];
+        while($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
 
-    $conn = connection();
-    $query = "SELECT * FROM menu";
-    $result = mysqli_query($conn, $query);
-    $data = [];
-    while($row = mysqli_fetch_assoc($result)){
-        $data[] = $row;
     }
     
     $makanan_berat = array_filter($data, function($menu) {
-        return $menu['kategori'] == 'makanan';
+        return $menu['kategori'] == 'makanan' || $menu['kategori'] == 'makanan berat';
     });
 
     $makanan_ringan = array_filter($data, function($menu) {
