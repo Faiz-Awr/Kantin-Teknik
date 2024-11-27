@@ -458,8 +458,6 @@
     }
 
     function cekLogin(){
-        if(!isset($_SESSION)){
-            header('Location: logout.php');
         if(!isset($_SESSION['id'])){
             header('Location: ../login');
             exit();
