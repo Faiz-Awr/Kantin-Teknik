@@ -50,7 +50,7 @@
                     <h2>Profil Penjual</h2>
                 </div> 
             </a>
-            <a href="menu" class="link-menu-admin">
+            <a href="../menu" class="link-menu-admin">
                 <div class="list-menu-admin">
                     <div class="icon-menu-admin">
                         <img src="../assets/pencil-square.png" alt="">
