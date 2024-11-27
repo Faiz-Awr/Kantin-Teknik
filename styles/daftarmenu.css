@@ -183,6 +183,8 @@ hr {
 .tombol-tipe-pemesanan:hover{
     transform: scale(0.95);
     transition: transform 0.3s ease;
+    background-color: #D24511;
+    color: #ECCDC2;
 }
 
 .tombol-tipe-pemesanan label {
@@ -273,15 +275,35 @@ hr {
     width: 43.188px;
 }
 
-.quantity {
+.keranjang-quantity {
     background-color: #F3E6E1;
     border: 1px solid #D24511;
     color: #D24511;
-    padding: 5px 10px;
+    padding: 0 10px;
+    height: 40px;
+    width: 35px;
+    justify-content: center;
     border-radius: 5px;
     font-size: 1em;
     font-weight: bold;
     text-align: center;
+    display: grid;
+    place-items: center;
+}
+.menu-quantity {
+    background-color: #F3E6E1;
+    border: 1px solid #D24511;
+    color: #D24511;
+    height: 45px;
+    width: 30px;
+    justify-content: center;
+    padding: 0 23px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    display: grid;
+    place-items: center;
+    
 }
 
 .isimenu3 {
@@ -308,17 +330,19 @@ hr {
     height: 36px;
     font-size: 14px;
 }
-
 .hapus-pesanan {
     background-color: #42251A;
     height: 36px;
     width: 36px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
     color: #ff5f5f;
     margin-left: 10px;
+    border: none;
+    display: grid;
+    place-items: center;
 }
+
 .hapus-pesanan:hover {
     transform: scale(0.95);
     transition: transform 0.3s ease;
@@ -571,15 +595,26 @@ a{
 }
 
 /* Gaya untuk tombol kurangi, tambah, dan tombol tambah langsung */
-.tombol-aksi-menu button,
-.btn-tambah {
+.quantity-controls .btn-tambah {
     background-color: #42251A;
     color: #ECCDC2;
     border: none;
     border-radius: 8px;
-    font-size: 12px;
-    padding: 6px;
-    height: 50px;
+    padding: 0 18px;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quantity-controls .btn-kurang {
+    background-color: #D24511;
+    color: #ECCDC2;
+    border: none;
+    border-radius: 8px;
+    padding: 0 18px;
+    height: 45px;
     width: 100%;
     cursor: pointer;
     display: flex;
@@ -588,7 +623,7 @@ a{
 }
 
 /* Ikon pada tombol */
-.tombol-aksi-menu button img {
+.aksi-menu button img {
     width: 12px;
 }
 
@@ -596,13 +631,21 @@ a{
 .btn-tambah {
     flex-grow: 1;
     text-align: center;
-    padding: 8px;
+    padding: 8px 50px;
     font-size: 12px;
+    font-weight: 700;
+    background: #42251A;
+    color: #F3E6E1;
+    border: none;
+    border-radius: 15px;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
 }
 
 /* Efek hover pada tombol */
-.tombol-aksi-menu button:hover,
-.btn-tambah:hover {
+.aksi-menu button:hover,
+.btn-tambah .btn-kurang:hover {
     transform: scale(0.95);
     transition: transform 0.3s ease;
 }
@@ -635,6 +678,7 @@ a{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 5px;
     margin: 0;
 }
 
@@ -644,6 +688,10 @@ a{
     justify-content: center;
     align-items: center;
     margin: 0;
+    gap: 10px;
+}
+.quantity-keranjang img {
+    width: 12px;
 }
 
 .tombol-aksi-keranjang {
@@ -651,3 +699,41 @@ a{
     align-items: center;
     justify-content: flex-start;
 }
+
+.keranjang-btn-tambah {
+    background-color: #42251A;
+    color: #ECCDC2;
+    border: none;
+    border-radius: 8px;
+    padding: 0 12px;
+    height: 36px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keranjang-btn-kurang {
+    background-color: #D24511;
+    color: #ECCDC2;
+    border: none;
+    border-radius: 8px;
+    padding: 0 12px;
+    height: 36px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.keranjang-btn-tambah:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.keranjang-btn-kurang:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+

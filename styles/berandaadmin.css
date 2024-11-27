@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F3E6E1;
-    font-family: sans-serif;
+    font-family: sans-serif, 'poppins';
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -19,6 +19,7 @@ body {
     top: 0;
     height: 60px;
     padding: 0 5%;
+    font-family: 'Poppins';
 }
 
 .navbar img {

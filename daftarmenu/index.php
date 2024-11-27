@@ -167,7 +167,7 @@
                                     </div>
                                 </div>
                                 <div class="isimenu2">
-                                    <div class="quantity"><?php echo $item['quantity']; ?></div>
+                                    <div class="keranjang-quantity"><?php echo $item['quantity']; ?></div>
                                 </div>
                                 <div class="isimenu3">
                                     <p class="price">Rp. <?php echo number_format($item['price'] * $item['quantity'], 0, ',', '.'); ?></p>
@@ -178,8 +178,8 @@
                                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                                     <input type="hidden" name="id_penjual" value="<?php echo $id_penjual; ?>">
                                     <div class="quantity-keranjang">
-                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
-                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                        <button type="submit" class="keranjang-btn-kurang" name="kurang"><img src ="../assets/minus-sm.png"></button>
+                                        <button type="submit" class="keranjang-btn-tambah" name="tambah"><img src ="../assets/plus-sm.png"></button>
                                     </div>
                                     <button type="submit" class="hapus-pesanan" name="hapus"><img src="../assets/sampah.png" alt=""></button>
                                 </form>
@@ -263,9 +263,9 @@
                                 <input type="hidden" name="foto" value="<?php echo $menu['foto']?>">
                                 <?php if (isset($_SESSION['cart'][$menu['id']])): ?>
                                     <div class="quantity-controls">
-                                        <button type="submit" class="btn-kurang" name="kurang">-</button>
-                                        <span class="quantity"><?php echo $_SESSION['cart'][$menu['id']]['quantity']; ?></span>
-                                        <button type="submit" class="btn-tambah" name="tambah">+</button>
+                                        <button type="submit" class="btn-kurang" name="kurang"><img src ="../assets/minus-sm.png"></button>
+                                        <span class="menu-quantity"><?php echo $_SESSION['cart'][$menu['id']]['quantity']; ?></span>
+                                        <button type="submit" class="btn-tambah" name="tambah"><img src ="../assets/plus-sm.png"></button>
                                     </div>
                                 <?php else: ?>
                                     <button type="submit" class="btn-tambah" name="tambah">Tambah</button>

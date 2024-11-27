@@ -173,7 +173,7 @@ body {
 .add-button {
     background-color: #3B2F2F;
     color: #ECCDC2;
-    padding: 10px;
+    padding: 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -184,7 +184,7 @@ body {
     background-color: #D24511;
     text-align: left;
     color: #ECCDC2;
-    padding: 10px;
+    padding: 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -195,8 +195,9 @@ body {
 footer {
     color: black;
     padding: 10px;
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    margin-left: 25%;
+    width: auto;
     box-sizing: border-box;
     font-size: 12px;
 }
