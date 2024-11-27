@@ -107,7 +107,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Penjual</title>
-    <link rel="stylesheet" href="styles/profilpenjual.css">
+    <link rel="stylesheet" href="../styles/profilpenjual.css">
 </head>
 <body>
     <header class="navbar">
@@ -158,7 +158,7 @@
                     <div class="tombol">
                         <button type="submit" name="simpan">Simpan Perubahan</button>
                         <a href="berandaadmin.php"class="beranda"><div><span>Beranda</span></div></a>
-                        <a class="logout" href="logout.php" ><div><span>Keluar Akun</span></div></a>
+                        <a class="logout" href="../logout.php" ><div><span>Keluar Akun</span></div></a>
                     </div>
                 </div>
                 <div class="kanan">

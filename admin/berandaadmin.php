@@ -32,7 +32,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda</title>
-    <link rel="stylesheet" href="styles/berandaadmin.css">
+    <link rel="stylesheet" href="../styles/berandaadmin.css">
 </head>
 <body>
     <?php include("../navbar.php")?>
@@ -45,7 +45,7 @@
             <a href="profilpenjual.php" class="link-menu-admin">
                 <div class="list-menu-admin">
                     <div class="icon-menu-admin">
-                        <img src="assets/person.png" alt="">
+                        <img src="../assets/person.png" alt="">
                     </div>
                     <h2>Profil Penjual</h2>
                 </div> 
@@ -53,7 +53,7 @@
             <a href="menu" class="link-menu-admin">
                 <div class="list-menu-admin">
                     <div class="icon-menu-admin">
-                        <img src="assets/pencil-square.png" alt="">
+                        <img src="../assets/pencil-square.png" alt="">
                     </div>
                     <h2>Edit Menu</h2>
                 </div>
@@ -61,7 +61,7 @@
             <a href="lihatantrian.php" class="link-menu-admin">
                 <div class="list-menu-admin">
                     <div class="icon-menu-admin">
-                        <img src="assets/receipt-cutoff.png" alt="">
+                        <img src="../assets/receipt-cutoff.png" alt="">
                     </div>
                     <h2>Lihat Antrian</h2>
                 </div>

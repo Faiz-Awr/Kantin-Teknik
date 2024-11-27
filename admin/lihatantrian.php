@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lihat Antrian</title>
-    <link rel="stylesheet" href="styles/lihatantrian.css">
+    <link rel="stylesheet" href="../styles/lihatantrian.css">
 </head>
 <body>
     <?php include('../navbar.php')?>
