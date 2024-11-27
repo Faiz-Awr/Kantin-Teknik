@@ -1,5 +1,5 @@
 <?php
-    require_once 'phpProcesses/functions.php';
+    require_once '../phpProcesses/functions.php';
     session_start();
     cekLogin();
 
