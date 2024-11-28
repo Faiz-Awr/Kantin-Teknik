@@ -22,7 +22,7 @@
         header('Location: berandaadmin.php');
         exit();
     }
-
+    print_r($_SESSION['temp_menu_data']);
 ?>
 
 

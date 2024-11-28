@@ -2,6 +2,7 @@
     require '../phpProcesses/functions.php';
     if(isset($_POST['register'])){
         if (strlen($_POST['password']) < 8) {
+            unset($_POST);
             echo '<script>
             alert("Password minimal 8 karakter");
             document.location.href = "../register";

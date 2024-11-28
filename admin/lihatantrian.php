@@ -1,5 +1,5 @@
 <?php
-    require_once '../phpProcesses/functions.php';
+    require_once('../phpProcesses/functions.php');
     session_start();
     cekLogin();
     $antrian = getAntrian();
@@ -9,7 +9,6 @@
         selesaiAntrian($id);
         header('Location: lihatantrian.php');
     }
-
 ?>
 
 
@@ -45,24 +44,28 @@
                     <th>Aksi</th>
                 </tr>
                 <?php
-                    $i = 1;
-                    foreach($antrian as $pesanan){
-                        echo '<tr>';
-                        echo '<td>'.$i.'</td>';
-                        echo '<td>'.$pesanan['nama'].'</td>';
-                        echo '<td>'.$pesanan['nama_pemesan'].'</td>';
-                        echo '<td>'.$pesanan['no_tlp_pemesan'].'</td>';
-                        echo '<td>'.$pesanan['status'].'</td>';
-                        echo '<td>';
-                        echo '<form action="lihatantrian.php" method="post">';
-                        echo '<input type="hidden" name="id" value="'.$pesanan['id_pesanan'].'">';
-                        echo '<button type="submit" name="selesai" class="selesai" ><div>';
-                        echo '<span>Selesai</span>';
-                        echo '</div></button>';
-                        echo '</form>';
-                        echo '</td>';
-                        echo '</tr>';
-                        $i++;
+                    if (empty($antrian)){
+                        echo '<tr><td colspan="6">Tidak ada antrian</td></tr>';
+                    } else{
+                        $i = 1;
+                        foreach($antrian as $pesanan){
+                            echo '<tr>';
+                            echo '<td>'.$i.'</td>';
+                            echo '<td>'.$pesanan['nama'].'</td>';
+                            echo '<td>'.$pesanan['nama_pemesan'].'</td>';
+                            echo '<td>'.$pesanan['no_tlp_pemesan'].'</td>';
+                            echo '<td>'.$pesanan['status'].'</td>';
+                            echo '<td>';
+                            echo '<form action="lihatantrian.php" method="post">';
+                            echo '<input type="hidden" name="id" value="'.$pesanan['id_pesanan'].'">';
+                            echo '<button type="submit" name="selesai" class="selesai" ><div>';
+                            echo '<span>Selesai</span>';
+                            echo '</div></button>';
+                            echo '</form>';
+                            echo '</td>';
+                            echo '</tr>';
+                            $i++;
+                        }
                     }
                 ?>
             </table>

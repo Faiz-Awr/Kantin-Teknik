@@ -68,7 +68,7 @@
     
             // Generate a unique name for the file
             $foto_name = uniqid('profile_') . '.' . $extension;
-            $foto_path = 'img/' . $foto_name;
+            $foto_path = '../img/' . $foto_name;
     
             // Move the uploaded file to the target directory
             if (move_uploaded_file($tmp_name, $foto_path)) {
@@ -79,7 +79,7 @@
                 
                 if (mysqli_query($conn, $query)) {
                     // Update the session with the new photo name
-                    unlink('img/' . $_SESSION['foto']); // Remove the old photo
+                    unlink('../img/' . $_SESSION['foto']); // Remove the old photo
                     $_SESSION['foto'] = $foto_name;
     
                     // Notify the user and reload the profile page
